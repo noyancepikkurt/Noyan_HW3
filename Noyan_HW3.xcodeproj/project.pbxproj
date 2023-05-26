@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089AE2A2084A70058F356 /* AppDelegate.swift */; };
-		5DD089B12A2084A70058F356 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089B02A2084A70058F356 /* SceneDelegate.swift */; };
-		5DD089B32A2084A70058F356 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089B22A2084A70058F356 /* ViewController.swift */; };
-		5DD089B62A2084A70058F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B42A2084A70058F356 /* Main.storyboard */; };
 		5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B72A2084A80058F356 /* Assets.xcassets */; };
 		5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */; };
 		5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5433D2A2085950087FCA2 /* AlertExtension.swift */; };
@@ -19,14 +16,18 @@
 		5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */; };
 		5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543452A2086000087FCA2 /* UIView+Extension.swift */; };
 		5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543472A2086500087FCA2 /* Collection+Extension.swift */; };
+		5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5434C2A208D940087FCA2 /* SplashViewController.swift */; };
+		5DD5434F2A208D940087FCA2 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD5434D2A208D940087FCA2 /* SplashViewController.xib */; };
+		5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543512A20961D0087FCA2 /* NavigationHelper.swift */; };
+		5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543562A20A4700087FCA2 /* HomeViewController.swift */; };
+		5DD543592A20A4700087FCA2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD543572A20A4700087FCA2 /* HomeViewController.xib */; };
+		5DD5435D2A20ACED0087FCA2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */; };
+		5DD5435E2A20ACED0087FCA2 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5DD089AB2A2084A70058F356 /* Noyan_HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noyan_HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD089AE2A2084A70058F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5DD089B02A2084A70058F356 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5DD089B22A2084A70058F356 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5DD089B52A2084A70058F356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DD089B72A2084A80058F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DD089BA2A2084A80058F356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DD089BC2A2084A80058F356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +37,13 @@
 		5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 		5DD543452A2086000087FCA2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		5DD543472A2086500087FCA2 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		5DD5434C2A208D940087FCA2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5DD5434D2A208D940087FCA2 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		5DD543512A20961D0087FCA2 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
+		5DD543562A20A4700087FCA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5DD543572A20A4700087FCA2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +78,9 @@
 			children = (
 				5DD5433A2A2085480087FCA2 /* App */,
 				5DD543392A2085210087FCA2 /* Core */,
-				5DD5433B2A20856C0087FCA2 /* Screens */,
 				5DD5433C2A20857E0087FCA2 /* Extensions */,
+				5DD543502A2096140087FCA2 /* Helper */,
+				5DD5433B2A20856C0087FCA2 /* Screens */,
 				5DD089BC2A2084A80058F356 /* Info.plist */,
 			);
 			path = Noyan_HW3;
@@ -81,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				5DD089AE2A2084A70058F356 /* AppDelegate.swift */,
-				5DD089B02A2084A70058F356 /* SceneDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -90,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				5DD089B72A2084A80058F356 /* Assets.xcassets */,
-				5DD089B42A2084A70058F356 /* Main.storyboard */,
 				5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */,
 			);
 			path = App;
@@ -99,7 +106,8 @@
 		5DD5433B2A20856C0087FCA2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5DD089B22A2084A70058F356 /* ViewController.swift */,
+				5DD543532A20A45B0087FCA2 /* Home */,
+				5DD543492A208D6D0087FCA2 /* Splash */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -115,6 +123,66 @@
 				5DD543452A2086000087FCA2 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5DD543492A208D6D0087FCA2 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5434A2A208D750087FCA2 /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		5DD5434A2A208D750087FCA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5434C2A208D940087FCA2 /* SplashViewController.swift */,
+				5DD5434D2A208D940087FCA2 /* SplashViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DD543502A2096140087FCA2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543512A20961D0087FCA2 /* NavigationHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		5DD543532A20A45B0087FCA2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543552A20A4640087FCA2 /* ViewModel */,
+				5DD543542A20A4600087FCA2 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5DD543542A20A4600087FCA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5435A2A20ACDD0087FCA2 /* Cell */,
+				5DD543562A20A4700087FCA2 /* HomeViewController.swift */,
+				5DD543572A20A4700087FCA2 /* HomeViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DD543552A20A4640087FCA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5DD5435A2A20ACDD0087FCA2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */,
+				5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,8 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */,
+				5DD5435E2A20ACED0087FCA2 /* TableViewCell.xib in Resources */,
 				5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */,
-				5DD089B62A2084A70058F356 /* Main.storyboard in Resources */,
+				5DD5434F2A208D940087FCA2 /* SplashViewController.xib in Resources */,
+				5DD543592A20A4700087FCA2 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,26 +261,20 @@
 				5DD543422A2085CC0087FCA2 /* CollectionViewCell+Extension.swift in Sources */,
 				5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */,
 				5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */,
+				5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */,
 				5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */,
-				5DD089B32A2084A70058F356 /* ViewController.swift in Sources */,
+				5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */,
+				5DD5435D2A20ACED0087FCA2 /* TableViewCell.swift in Sources */,
 				5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */,
 				5DD543402A2085B70087FCA2 /* CollectionView+Extension.swift in Sources */,
 				5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */,
-				5DD089B12A2084A70058F356 /* SceneDelegate.swift in Sources */,
+				5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5DD089B42A2084A70058F356 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5DD089B52A2084A70058F356 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -348,7 +412,6 @@
 				INFOPLIST_FILE = Noyan_HW3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -376,7 +439,6 @@
 				INFOPLIST_FILE = Noyan_HW3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
