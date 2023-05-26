@@ -71,7 +71,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: HomeViewModelProtocol {
     func fetchedWord() {
         //tableview reload
-        // coredata'ya eklenecek 
+        // coredata'ya eklenecek
         print("data geldi")
     }
     

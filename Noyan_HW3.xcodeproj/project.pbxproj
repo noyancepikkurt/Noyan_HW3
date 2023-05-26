@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D65312A2A20D7DB00C4919F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6531292A20D7DB00C4919F /* DetailViewModel.swift */; };
+		5D65312D2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D65312B2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld */; };
+		5D7BE6EA2A20E43300460D95 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7BE6E92A20E43300460D95 /* DataPersistenceManager.swift */; };
 		5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089AE2A2084A70058F356 /* AppDelegate.swift */; };
 		5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B72A2084A80058F356 /* Assets.xcassets */; };
 		5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		5D6531292A20D7DB00C4919F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		5D65312C2A20D8C200C4919F /* RecentSearchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecentSearchModel.xcdatamodel; sourceTree = "<group>"; };
+		5D7BE6E92A20E43300460D95 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		5DD089AB2A2084A70058F356 /* Noyan_HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noyan_HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD089AE2A2084A70058F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DD089B72A2084A80058F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				5DD543502A2096140087FCA2 /* Helper */,
 				5DD5433B2A20856C0087FCA2 /* Screens */,
 				5DD089BC2A2084A80058F356 /* Info.plist */,
+				5D65312B2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld */,
 			);
 			path = Noyan_HW3;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				5DD543512A20961D0087FCA2 /* NavigationHelper.swift */,
+				5D7BE6E92A20E43300460D95 /* DataPersistenceManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -366,11 +372,13 @@
 				5DD543422A2085CC0087FCA2 /* CollectionViewCell+Extension.swift in Sources */,
 				5DD543762A20C8630087FCA2 /* DetailViewController.swift in Sources */,
 				5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */,
+				5D65312D2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld in Sources */,
 				5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */,
 				5DD543672A20C5800087FCA2 /* NetworkManager.swift in Sources */,
 				5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */,
 				5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */,
 				5DD5436B2A20C5A70087FCA2 /* NetworkService.swift in Sources */,
+				5D7BE6EA2A20E43300460D95 /* DataPersistenceManager.swift in Sources */,
 				5DD543722A20C5FC0087FCA2 /* DictionaryModel.swift in Sources */,
 				5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */,
 				5DD5435D2A20ACED0087FCA2 /* HomeTableViewCell.swift in Sources */,
@@ -607,6 +615,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5D65312B2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D65312C2A20D8C200C4919F /* RecentSearchModel.xcdatamodel */,
+			);
+			currentVersion = 5D65312C2A20D8C200C4919F /* RecentSearchModel.xcdatamodel */;
+			path = RecentSearchModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5DD089A32A2084A70058F356 /* Project object */;
 }

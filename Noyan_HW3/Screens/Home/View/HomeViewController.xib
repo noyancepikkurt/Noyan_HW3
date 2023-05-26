@@ -34,8 +34,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWz-y5-teI">
                     <rect key="frame" x="0.0" y="754" width="393" height="92"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
-                            <rect key="frame" x="158" y="33" width="70" height="26"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
+                            <rect key="frame" x="146" y="33" width="101" height="26"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -43,9 +43,9 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <constraints>
-                        <constraint firstItem="ou4-uK-8bK" firstAttribute="leading" secondItem="iWz-y5-teI" secondAttribute="leading" constant="158" id="4U4-Dk-MMd"/>
-                        <constraint firstItem="ou4-uK-8bK" firstAttribute="top" secondItem="iWz-y5-teI" secondAttribute="top" constant="33" id="KHY-gz-aX4"/>
-                        <constraint firstAttribute="trailing" secondItem="ou4-uK-8bK" secondAttribute="trailing" constant="165" id="rN7-dX-Otd"/>
+                        <constraint firstItem="ou4-uK-8bK" firstAttribute="top" secondItem="iWz-y5-teI" secondAttribute="top" constant="33" id="5Bb-wh-Mt2"/>
+                        <constraint firstItem="ou4-uK-8bK" firstAttribute="leading" secondItem="iWz-y5-teI" secondAttribute="leading" constant="146" id="PVX-Bt-hz7"/>
+                        <constraint firstAttribute="trailing" secondItem="ou4-uK-8bK" secondAttribute="trailing" constant="146" id="hbD-iN-Tp2"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRX-Ji-sBd">
@@ -75,6 +75,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jHB-R4-ckL" secondAttribute="trailing" constant="220" id="RMw-dl-GDP"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="V8d-3A-6tf"/>
                 <constraint firstItem="TRX-Ji-sBd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="VzR-ei-OJO"/>
+                <constraint firstAttribute="bottom" secondItem="iWz-y5-teI" secondAttribute="bottom" id="o1L-Bp-gSe"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="v4Q-Uv-nfL"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="top" secondItem="jHB-R4-ckL" secondAttribute="bottom" constant="12" id="vPS-fG-HDV"/>
                 <constraint firstItem="TRX-Ji-sBd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="zWC-uC-yra"/>
