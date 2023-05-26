@@ -13,6 +13,12 @@
 		5DD089B62A2084A70058F356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B42A2084A70058F356 /* Main.storyboard */; };
 		5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B72A2084A80058F356 /* Assets.xcassets */; };
 		5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */; };
+		5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5433D2A2085950087FCA2 /* AlertExtension.swift */; };
+		5DD543402A2085B70087FCA2 /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5433F2A2085B70087FCA2 /* CollectionView+Extension.swift */; };
+		5DD543422A2085CC0087FCA2 /* CollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543412A2085CC0087FCA2 /* CollectionViewCell+Extension.swift */; };
+		5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */; };
+		5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543452A2086000087FCA2 /* UIView+Extension.swift */; };
+		5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543472A2086500087FCA2 /* Collection+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		5DD089B72A2084A80058F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DD089BA2A2084A80058F356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DD089BC2A2084A80058F356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DD5433D2A2085950087FCA2 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		5DD5433F2A2085B70087FCA2 /* CollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extension.swift"; sourceTree = "<group>"; };
+		5DD543412A2085CC0087FCA2 /* CollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
+		5DD543452A2086000087FCA2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		5DD543472A2086500087FCA2 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,53 @@
 		5DD089AD2A2084A70058F356 /* Noyan_HW3 */ = {
 			isa = PBXGroup;
 			children = (
-				5DD089AE2A2084A70058F356 /* AppDelegate.swift */,
-				5DD089B02A2084A70058F356 /* SceneDelegate.swift */,
-				5DD089B22A2084A70058F356 /* ViewController.swift */,
-				5DD089B42A2084A70058F356 /* Main.storyboard */,
-				5DD089B72A2084A80058F356 /* Assets.xcassets */,
-				5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */,
+				5DD5433A2A2085480087FCA2 /* App */,
+				5DD543392A2085210087FCA2 /* Core */,
+				5DD5433B2A20856C0087FCA2 /* Screens */,
+				5DD5433C2A20857E0087FCA2 /* Extensions */,
 				5DD089BC2A2084A80058F356 /* Info.plist */,
 			);
 			path = Noyan_HW3;
+			sourceTree = "<group>";
+		};
+		5DD543392A2085210087FCA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5DD089AE2A2084A70058F356 /* AppDelegate.swift */,
+				5DD089B02A2084A70058F356 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5DD5433A2A2085480087FCA2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5DD089B72A2084A80058F356 /* Assets.xcassets */,
+				5DD089B42A2084A70058F356 /* Main.storyboard */,
+				5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5DD5433B2A20856C0087FCA2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5DD089B22A2084A70058F356 /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5DD5433C2A20857E0087FCA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5433D2A2085950087FCA2 /* AlertExtension.swift */,
+				5DD543472A2086500087FCA2 /* Collection+Extension.swift */,
+				5DD5433F2A2085B70087FCA2 /* CollectionView+Extension.swift */,
+				5DD543412A2085CC0087FCA2 /* CollectionViewCell+Extension.swift */,
+				5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */,
+				5DD543452A2086000087FCA2 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +188,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD543422A2085CC0087FCA2 /* CollectionViewCell+Extension.swift in Sources */,
+				5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */,
+				5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */,
+				5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */,
 				5DD089B32A2084A70058F356 /* ViewController.swift in Sources */,
 				5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */,
+				5DD543402A2085B70087FCA2 /* CollectionView+Extension.swift in Sources */,
+				5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */,
 				5DD089B12A2084A70058F356 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
