@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D65312A2A20D7DB00C4919F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6531292A20D7DB00C4919F /* DetailViewModel.swift */; };
 		5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089AE2A2084A70058F356 /* AppDelegate.swift */; };
 		5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B72A2084A80058F356 /* Assets.xcassets */; };
 		5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */; };
@@ -21,11 +22,20 @@
 		5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543512A20961D0087FCA2 /* NavigationHelper.swift */; };
 		5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543562A20A4700087FCA2 /* HomeViewController.swift */; };
 		5DD543592A20A4700087FCA2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD543572A20A4700087FCA2 /* HomeViewController.xib */; };
-		5DD5435D2A20ACED0087FCA2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */; };
-		5DD5435E2A20ACED0087FCA2 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */; };
+		5DD5435D2A20ACED0087FCA2 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5435B2A20ACED0087FCA2 /* HomeTableViewCell.swift */; };
+		5DD5435E2A20ACED0087FCA2 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD5435C2A20ACED0087FCA2 /* HomeTableViewCell.xib */; };
+		5DD543602A20B0C10087FCA2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5435F2A20B0C10087FCA2 /* HomeViewModel.swift */; };
+		5DD543672A20C5800087FCA2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543662A20C5800087FCA2 /* NetworkManager.swift */; };
+		5DD5436B2A20C5A70087FCA2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5436A2A20C5A70087FCA2 /* NetworkService.swift */; };
+		5DD5436D2A20C5B50087FCA2 /* NetworkConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5436C2A20C5B50087FCA2 /* NetworkConstans.swift */; };
+		5DD543702A20C5D70087FCA2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD5436F2A20C5D70087FCA2 /* Alamofire */; };
+		5DD543722A20C5FC0087FCA2 /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543712A20C5FC0087FCA2 /* DictionaryModel.swift */; };
+		5DD543762A20C8630087FCA2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543742A20C8630087FCA2 /* DetailViewController.swift */; };
+		5DD543772A20C8630087FCA2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD543752A20C8630087FCA2 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D6531292A20D7DB00C4919F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5DD089AB2A2084A70058F356 /* Noyan_HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noyan_HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD089AE2A2084A70058F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DD089B72A2084A80058F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,8 +52,15 @@
 		5DD543512A20961D0087FCA2 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		5DD543562A20A4700087FCA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5DD543572A20A4700087FCA2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		5DD5435B2A20ACED0087FCA2 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		5DD5435C2A20ACED0087FCA2 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		5DD5435F2A20B0C10087FCA2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5DD543662A20C5800087FCA2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5DD5436A2A20C5A70087FCA2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5DD5436C2A20C5B50087FCA2 /* NetworkConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstans.swift; sourceTree = "<group>"; };
+		5DD543712A20C5FC0087FCA2 /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
+		5DD543742A20C8630087FCA2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5DD543752A20C8630087FCA2 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD543702A20C5D70087FCA2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +94,7 @@
 		5DD089AD2A2084A70058F356 /* Noyan_HW3 */ = {
 			isa = PBXGroup;
 			children = (
+				5DD543612A20C4EC0087FCA2 /* API */,
 				5DD5433A2A2085480087FCA2 /* App */,
 				5DD543392A2085210087FCA2 /* Core */,
 				5DD5433C2A20857E0087FCA2 /* Extensions */,
@@ -106,6 +125,7 @@
 		5DD5433B2A20856C0087FCA2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5DD543732A20C8330087FCA2 /* Detail */,
 				5DD543532A20A45B0087FCA2 /* Home */,
 				5DD543492A208D6D0087FCA2 /* Splash */,
 			);
@@ -153,8 +173,8 @@
 		5DD543532A20A45B0087FCA2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5DD543552A20A4640087FCA2 /* ViewModel */,
 				5DD543542A20A4600087FCA2 /* View */,
+				5DD543552A20A4640087FCA2 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -172,6 +192,7 @@
 		5DD543552A20A4640087FCA2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5DD5435F2A20B0C10087FCA2 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -179,10 +200,87 @@
 		5DD5435A2A20ACDD0087FCA2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5DD5435B2A20ACED0087FCA2 /* TableViewCell.swift */,
-				5DD5435C2A20ACED0087FCA2 /* TableViewCell.xib */,
+				5DD5435B2A20ACED0087FCA2 /* HomeTableViewCell.swift */,
+				5DD5435C2A20ACED0087FCA2 /* HomeTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		5DD543612A20C4EC0087FCA2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543622A20C4F10087FCA2 /* DTOs */,
+				5DD543682A20C5920087FCA2 /* Network */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5DD543622A20C4F10087FCA2 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543642A20C5690087FCA2 /* Models */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		5DD543632A20C4F70087FCA2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543662A20C5800087FCA2 /* NetworkManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5DD543642A20C5690087FCA2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543712A20C5FC0087FCA2 /* DictionaryModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5DD543682A20C5920087FCA2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543632A20C4F70087FCA2 /* Core */,
+				5DD543692A20C5980087FCA2 /* Service */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5DD543692A20C5980087FCA2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5436A2A20C5A70087FCA2 /* NetworkService.swift */,
+				5DD5436C2A20C5B50087FCA2 /* NetworkConstans.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5DD543732A20C8330087FCA2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543782A20C8670087FCA2 /* View */,
+				5DD543792A20C86C0087FCA2 /* ViewModel */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5DD543782A20C8670087FCA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DD543742A20C8630087FCA2 /* DetailViewController.swift */,
+				5DD543752A20C8630087FCA2 /* DetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DD543792A20C86C0087FCA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5D6531292A20D7DB00C4919F /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +299,9 @@
 			dependencies = (
 			);
 			name = Noyan_HW3;
+			packageProductDependencies = (
+				5DD5436F2A20C5D70087FCA2 /* Alamofire */,
+			);
 			productName = Noyan_HW3;
 			productReference = 5DD089AB2A2084A70058F356 /* Noyan_HW3.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +330,9 @@
 				Base,
 			);
 			mainGroup = 5DD089A22A2084A70058F356;
+			packageReferences = (
+				5DD5436E2A20C5D70087FCA2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5DD089AC2A2084A70058F356 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,7 +348,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */,
-				5DD5435E2A20ACED0087FCA2 /* TableViewCell.xib in Resources */,
+				5DD543772A20C8630087FCA2 /* DetailViewController.xib in Resources */,
+				5DD5435E2A20ACED0087FCA2 /* HomeTableViewCell.xib in Resources */,
 				5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */,
 				5DD5434F2A208D940087FCA2 /* SplashViewController.xib in Resources */,
 				5DD543592A20A4700087FCA2 /* HomeViewController.xib in Resources */,
@@ -259,15 +364,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DD543422A2085CC0087FCA2 /* CollectionViewCell+Extension.swift in Sources */,
+				5DD543762A20C8630087FCA2 /* DetailViewController.swift in Sources */,
 				5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */,
 				5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */,
+				5DD543672A20C5800087FCA2 /* NetworkManager.swift in Sources */,
 				5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */,
 				5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */,
+				5DD5436B2A20C5A70087FCA2 /* NetworkService.swift in Sources */,
+				5DD543722A20C5FC0087FCA2 /* DictionaryModel.swift in Sources */,
 				5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */,
-				5DD5435D2A20ACED0087FCA2 /* TableViewCell.swift in Sources */,
+				5DD5435D2A20ACED0087FCA2 /* HomeTableViewCell.swift in Sources */,
+				5DD543602A20B0C10087FCA2 /* HomeViewModel.swift in Sources */,
 				5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */,
+				5D65312A2A20D7DB00C4919F /* DetailViewModel.swift in Sources */,
 				5DD543402A2085B70087FCA2 /* CollectionView+Extension.swift in Sources */,
 				5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */,
+				5DD5436D2A20C5B50087FCA2 /* NetworkConstans.swift in Sources */,
 				5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +588,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DD5436E2A20C5D70087FCA2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DD5436F2A20C5D70087FCA2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DD5436E2A20C5D70087FCA2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DD089A32A2084A70058F356 /* Project object */;
 }

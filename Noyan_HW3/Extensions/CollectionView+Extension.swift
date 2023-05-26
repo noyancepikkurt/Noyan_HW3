@@ -7,21 +7,15 @@
 
 import UIKit
 
-extension UICollectionView {
-    func register(cellType: UICollectionViewCell.Type) {
-        register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
+extension UITableView {
+    func register(cellType: UITableViewCell.Type) {
+        register(cellType.nib, forCellReuseIdentifier: cellType.identifier)
     }
     
-    func dequeCell<T: UICollectionViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? T else { fatalError("error")}
+    func dequeueReusableCell<T: UITableViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? T else {
+            fatalError("Could not dequeue cell with identifier: \(cellType.identifier)")
+        }
         return cell
-    }
-    
-    func setupCollectionView(_ collectionView: UICollectionView) {
-        let design : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        design.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        design.minimumInteritemSpacing = 0
-        design.minimumLineSpacing = 10
-        collectionView.collectionViewLayout = design
     }
 }

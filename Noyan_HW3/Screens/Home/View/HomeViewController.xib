@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Noyan_HW3" customModuleProvider="target">
             <connections>
+                <outlet property="recentSearchTableView" destination="3aF-vY-hPi" id="X0O-Xf-0Ju"/>
+                <outlet property="searchTextField" destination="TRX-Ji-sBd" id="Dhi-Df-yO1"/>
+                <outlet property="searchViewButton" destination="iWz-y5-teI" id="OiQ-GQ-hrM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
