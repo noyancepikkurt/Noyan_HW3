@@ -11,7 +11,7 @@ final class CustomTextField: UITextField {
     
     lazy var leftImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.image = UIImage(named: "search")
         imageView.tintColor = .systemGray3
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -34,15 +34,6 @@ final class CustomTextField: UITextField {
         self.backgroundColor = .white
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.systemGray3.cgColor
-        self.layer.cornerRadius = 8
-        self.layer.masksToBounds = true
-        
-        // Gölgeyi ayarla
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowRadius = 4
-        
         addSubview()
         setupConstraints()
     }
@@ -61,7 +52,7 @@ final class CustomTextField: UITextField {
         NSLayoutConstraint.activate([
             leftImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             leftImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
-            leftImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
+            leftImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4),
             leftImageView.widthAnchor.constraint(equalTo: leftImageView.heightAnchor)
         ])
     }
@@ -76,7 +67,6 @@ final class CustomTextField: UITextField {
         self.layer.shadowRadius = 4
         self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
     }
-
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: placeholderInsets)
