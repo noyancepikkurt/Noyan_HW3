@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DictionaryAPI
 
 protocol HomeViewModelProtocol where Self: HomeViewController {
     func fetchSuccessWord()
@@ -23,9 +24,8 @@ final class HomeViewModel {
             guard let self else { return }
             switch result {
             case .success(let success):
-                self.successWord = success
+                self.successWord = success.word
                 self.delegate?.fetchSuccessWord()
-                print(success)
             case .failure(let error):
                 self.delegate?.didOccurError(error)
                 break

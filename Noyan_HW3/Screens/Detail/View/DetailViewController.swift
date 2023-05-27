@@ -21,8 +21,13 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        viewModel.fetchWordDetails()
+        viewModel.delegate = self
     }
+}
 
-
+extension DetailViewController: DetailViewModelProtocol {
+    func fetchedWordDetail() {
+        print(viewModel.wordDetail)
+    }
 }

@@ -72,6 +72,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(viewModel.recentSearchArray[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedWord = viewModel.recentSearchArray[indexPath.row]
+        guard let recentSearchWord = selectedWord.recentSearchWord else { return }
+        let detailViewModel = DetailViewModel(selectedWord: recentSearchWord)
+        let detailVC = DetailViewController(viewModel: detailViewModel)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension HomeViewController: HomeViewModelProtocol {

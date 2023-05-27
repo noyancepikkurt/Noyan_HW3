@@ -1,25 +1,24 @@
 //
 //  NetworkService.swift
-//  Noyan_HW3
+//  
 //
-//  Created by Noyan Çepikkurt on 26.05.2023.
+//  Created by Noyan Çepikkurt on 27.05.2023.
 //
 
 import Foundation
 
 public protocol NetworkServiceProtocol: AnyObject {
-    func fetchWord(pathUrl: String, completion: @escaping (Result<String, Error>) -> Void)
+    func fetchWord(pathUrl: String, completion: @escaping (Result<DictionaryModel, Error>) -> Void)
 }
 
 final public class NetworkService: NetworkServiceProtocol {
     static public let shared = NetworkService()
     
-    public func fetchWord(pathUrl: String, completion: @escaping (Result<String, Error>) -> Void) {
+    public func fetchWord(pathUrl: String, completion: @escaping (Result<DictionaryModel, Error>) -> Void) {
         NetworkManager.shared.request(pathUrl: pathUrl) { (result: Result<[DictionaryModel], Error>) in
             switch result {
-            case .success(let success):
-                let word = success[0].word
-                completion(.success(word ?? ""))
+            case .success(let wordModel):
+                completion(.success(wordModel[0]))
             case .failure(let failure):
                 completion(.failure(failure))
             }
