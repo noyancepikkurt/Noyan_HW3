@@ -8,5 +8,9 @@
 import Foundation
 
 final class DetailViewModel {
+    var selectedWord: String
     
+    init(selectedWord: String) {
+        self.selectedWord = selectedWord
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 final class HomeTableViewCell: UITableViewCell {
     @IBOutlet  var recentSearchLabel: UILabel!
     
-
-    
+    func setup(_ model: RecentSearchEntity) {
+        recentSearchLabel.text = model.recentSearchWord
+    }
 }

@@ -7,23 +7,50 @@
 
 import Foundation
 
-protocol HomeViewModelProtocol: AnyObject {
-    func fetchedWord()
+protocol HomeViewModelProtocol where Self: HomeViewController {
+    func fetchSuccessWord()
     func didOccurError(_ error: Error)
+    func fetchWordFromCoreData()
 }
 
-final class HomeViewModel{
+final class HomeViewModel {
     weak var delegate: HomeViewModelProtocol?
+    var recentSearchArray = [RecentSearchEntity]()
+    var successWord: String?
     
-    func set(searchedWord: String) {
+    func checkWordAPI(searchedWord: String) {
         NetworkService.shared.fetchWord(pathUrl: "https://api.dictionaryapi.dev/api/v2/entries/en/\(searchedWord)") { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let success):
-                self.delegate?.fetchedWord()
+                self.successWord = success
+                self.delegate?.fetchSuccessWord()
                 print(success)
             case .failure(let error):
                 self.delegate?.didOccurError(error)
+                break
+            }
+        }
+    }
+    
+    func fetchAllRecentWords() {
+        DataPersistenceManager.shared.fetchWord { [weak self] result in
+            switch result {
+            case .success(let words):
+                self?.recentSearchArray = words
+                self?.delegate?.fetchWordFromCoreData()
+            case .failure(let error):
+                print("Error fetching recent search data: \(error)")
+            }
+        }
+    }
+    
+    func saveAndFetchWord(searchText: String) {
+        DataPersistenceManager.shared.saveWord(model: searchText) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.fetchAllRecentWords()
+            case .failure(_):
                 break
             }
         }

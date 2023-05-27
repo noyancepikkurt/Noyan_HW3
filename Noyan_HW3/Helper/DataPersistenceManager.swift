@@ -12,18 +12,26 @@ final class DataPersistenceManager {
     static let shared = DataPersistenceManager()
     private let maxRecentSearchCount = 5
     
-    func saveNew(model: DictionaryModel, isFavorite: Bool, completion: @escaping ((Result<Void, Error>)->Void)) {
+    func saveWord(model: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        fetchNew { result in
+        fetchWord { result in
             switch result {
             case .success(var recentSearches):
+                let existingSearch = recentSearches.first { $0.recentSearchWord == model }
+                if let existingSearch = existingSearch {
+                    if let index = recentSearches.firstIndex(of: existingSearch) {
+                        recentSearches.remove(at: index)
+                    }
+                    context.delete(existingSearch)
+                }
+                
                 let newSearch = RecentSearchEntity(context: context)
-                newSearch.recentSearchWord = model.word
+                newSearch.recentSearchWord = model
+                
                 if recentSearches.count >= self.maxRecentSearchCount {
                     let oldestSearch = recentSearches.removeFirst()
                     context.delete(oldestSearch)
                 }
-                
                 recentSearches.append(newSearch)
                 
                 do {
@@ -38,31 +46,16 @@ final class DataPersistenceManager {
         }
     }
     
-    func fetchNew(completion: @escaping (Result<[RecentSearchEntity], Error>) -> Void) {
+    func fetchWord(completion: @escaping (Result<[RecentSearchEntity], Error>) -> Void) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<RecentSearchEntity> = RecentSearchEntity.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)] // Tarih sırası
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         do {
-            let recentSearches = try context.fetch(fetchRequest)
-            
-            // Son aramalar
+            var recentSearches = try context.fetch(fetchRequest)
+            recentSearches.reverse()
             let limitedRecentSearches = Array(recentSearches.prefix(maxRecentSearchCount))
-            
             completion(.success(limitedRecentSearches))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-    
-    func deleteNew(model: RecentSearchEntity, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        context.delete(model)
-        
-        do {
-            try context.save()
-            completion(.success(()))
         } catch {
             completion(.failure(error))
         }
