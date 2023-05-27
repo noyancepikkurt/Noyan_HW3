@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D207B782A2210B70080011F /* DictionaryAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5D207B772A2210B70080011F /* DictionaryAPI */; };
+		5D207B7B2A2213C80080011F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D207B7A2A2213C80080011F /* CustomTextField.swift */; };
 		5D65312A2A20D7DB00C4919F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6531292A20D7DB00C4919F /* DetailViewModel.swift */; };
 		5D65312D2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D65312B2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld */; };
 		5D7BE6EA2A20E43300460D95 /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7BE6E92A20E43300460D95 /* DataPersistenceManager.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		5D207B752A220FD10080011F /* DictionaryAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DictionaryAPI; sourceTree = "<group>"; };
+		5D207B7A2A2213C80080011F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5D6531292A20D7DB00C4919F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5D65312C2A20D8C200C4919F /* RecentSearchModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecentSearchModel.xcdatamodel; sourceTree = "<group>"; };
 		5D7BE6E92A20E43300460D95 /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D207B792A2213A20080011F /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				5D207B7A2A2213C80080011F /* CustomTextField.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		5DD089A22A2084A70058F356 = {
@@ -191,6 +201,7 @@
 		5DD543542A20A4600087FCA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D207B792A2213A20080011F /* CustomView */,
 				5DD5435A2A20ACDD0087FCA2 /* Cell */,
 				5DD543562A20A4700087FCA2 /* HomeViewController.swift */,
 				5DD543572A20A4700087FCA2 /* HomeViewController.xib */,
@@ -330,6 +341,7 @@
 				5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */,
 				5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */,
 				5D7BE6EA2A20E43300460D95 /* DataPersistenceManager.swift in Sources */,
+				5D207B7B2A2213C80080011F /* CustomTextField.swift in Sources */,
 				5DD543582A20A4700087FCA2 /* HomeViewController.swift in Sources */,
 				5DD5435D2A20ACED0087FCA2 /* HomeTableViewCell.swift in Sources */,
 				5DD543602A20B0C10087FCA2 /* HomeViewModel.swift in Sources */,

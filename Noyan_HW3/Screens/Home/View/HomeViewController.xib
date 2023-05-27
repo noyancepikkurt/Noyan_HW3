@@ -22,17 +22,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHB-R4-ckL">
-                    <rect key="frame" x="16" y="169" width="157" height="20"/>
+                    <rect key="frame" x="16" y="161" width="157" height="20"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3aF-vY-hPi">
-                    <rect key="frame" x="16" y="201" width="361" height="475"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3aF-vY-hPi">
+                    <rect key="frame" x="16" y="193" width="361" height="475"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWz-y5-teI">
-                    <rect key="frame" x="0.0" y="754" width="393" height="92"/>
+                    <rect key="frame" x="0.0" y="746" width="393" height="92"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
                             <rect key="frame" x="146" y="33" width="101" height="26"/>
@@ -48,13 +48,16 @@
                         <constraint firstAttribute="trailing" secondItem="ou4-uK-8bK" secondAttribute="trailing" constant="146" id="hbD-iN-Tp2"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRX-Ji-sBd">
-                    <rect key="frame" x="16" y="91" width="361" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRX-Ji-sBd" customClass="CustomTextField" customModule="Noyan_HW3" customModuleProvider="target">
+                    <rect key="frame" x="16" y="75" width="361" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gTw-lr-a3n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="12"/>
+                            <real key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
@@ -62,23 +65,23 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TRX-Ji-sBd" secondAttribute="trailing" constant="16" id="0dt-dI-r0g"/>
-                <constraint firstItem="TRX-Ji-sBd" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.0447958" id="0sI-st-0KW"/>
+                <constraint firstItem="TRX-Ji-sBd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="0js-RW-jNR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3aF-vY-hPi" secondAttribute="trailing" constant="16" id="1v3-6S-baT"/>
                 <constraint firstItem="iWz-y5-teI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5Av-rs-ydT"/>
                 <constraint firstItem="iWz-y5-teI" firstAttribute="top" secondItem="3aF-vY-hPi" secondAttribute="bottom" constant="78" id="6sk-OV-qjV"/>
                 <constraint firstItem="iWz-y5-teI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ceb-at-ekd"/>
-                <constraint firstItem="jHB-R4-ckL" firstAttribute="top" secondItem="TRX-Ji-sBd" secondAttribute="bottom" constant="44" id="F0S-1Q-clT"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.0263505" id="IkS-D5-Ksz"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.625823" id="NjY-Wv-B5E"/>
+                <constraint firstItem="jHB-R4-ckL" firstAttribute="top" secondItem="TRX-Ji-sBd" secondAttribute="bottom" constant="36" id="PWP-Vq-hJY"/>
                 <constraint firstItem="iWz-y5-teI" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.121212" id="Q0b-9n-c9H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jHB-R4-ckL" secondAttribute="trailing" constant="220" id="RMw-dl-GDP"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="V8d-3A-6tf"/>
-                <constraint firstItem="TRX-Ji-sBd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="VzR-ei-OJO"/>
+                <constraint firstItem="TRX-Ji-sBd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fHJ-SY-ZhW"/>
                 <constraint firstAttribute="bottom" secondItem="iWz-y5-teI" secondAttribute="bottom" id="o1L-Bp-gSe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TRX-Ji-sBd" secondAttribute="trailing" constant="16" id="rjB-qA-Cgr"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="v4Q-Uv-nfL"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="top" secondItem="jHB-R4-ckL" secondAttribute="bottom" constant="12" id="vPS-fG-HDV"/>
-                <constraint firstItem="TRX-Ji-sBd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="zWC-uC-yra"/>
+                <constraint firstItem="3aF-vY-hPi" firstAttribute="top" secondItem="jHB-R4-ckL" secondAttribute="bottom" constant="12" id="xTe-YR-RSu"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>

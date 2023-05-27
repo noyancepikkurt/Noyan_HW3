@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    @IBOutlet private var searchTextField: UITextField!
+    @IBOutlet private var searchTextField: CustomTextField!
     @IBOutlet private var recentSearchTableView: UITableView!
     @IBOutlet private var searchViewButton: UIView!
     private var viewModel = HomeViewModel()
@@ -16,12 +16,13 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        viewModel.delegate = self
+        viewModel.fetchAllRecentWords()
         searchViewButtonSetUp()
         tableViewConfig()
-        viewModel.delegate = self
         searchViewButtonConfig()
-        viewModel.fetchAllRecentWords()
     }
+    
     
     private func tableViewConfig() {
         recentSearchTableView.register(cellType: HomeTableViewCell.self)
@@ -42,7 +43,6 @@ final class HomeViewController: UIViewController {
     
     @objc func searchViewTapped() {
         viewModel.checkWordAPI(searchedWord: searchTextField.text ?? "testttt")
-        
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -85,6 +85,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: HomeViewModelProtocol {
     func fetchSuccessWord() {
+        viewModel.saveAndFetchWord(searchText: searchTextField.text ?? "")
         guard let successWord = viewModel.successWord else { return }
         let detailViewModel = DetailViewModel(selectedWord: successWord)
         let detailVC = DetailViewController(viewModel: detailViewModel)
@@ -97,7 +98,6 @@ extension HomeViewController: HomeViewModelProtocol {
     
     func didOccurError(_ error: Error) {
         UIAlertController.alertMessage(title: "Error", message: "There is no word ", vc: self)
-        print("data gelmedi")
     }
     
     
