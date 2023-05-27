@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import DictionaryAPI
 
 final class DetailViewController: UIViewController {
     @IBOutlet private var detailTableView: UITableView!
     private let header = DetailHeaderView()
     private let viewModel: DetailViewModel
+    private var meaningModel = [Meaning]()
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
@@ -32,34 +34,42 @@ final class DetailViewController: UIViewController {
         detailTableView.delegate = self
         detailTableView.dataSource = self
         detailTableView.bounces = false
+        detailTableView.register(cellType: DetailTableViewCell.self)
+        detailTableView.rowHeight = UITableView.automaticDimension
+        detailTableView.estimatedRowHeight = 100
     }
 }
 
 extension DetailViewController: DetailViewModelProtocol {
     func fetchedWordDetail() {
-//        print(viewModel.wordDetail)
+        meaningModel = (viewModel.wordDetail?.meanings)!
+        detailTableView.reloadData()
     }
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        var meaningCount = 0
+        meaningModel.forEach { meaning in
+            guard let definitions = meaning.definitions else { return }
+            meaningCount += definitions.count
+        }
+        return meaningCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "5"
+        let cell = detailTableView.dequeueReusableCell(cellType: DetailTableViewCell.self, indexPath: indexPath) as DetailTableViewCell
+        cell.setup(meaningModel, index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        header
+        header.wordLabel.text = "DENEME"
+        header.pronounceLabel.text = "TEST"
         return header
     }
     
-    
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 150
     }
 }

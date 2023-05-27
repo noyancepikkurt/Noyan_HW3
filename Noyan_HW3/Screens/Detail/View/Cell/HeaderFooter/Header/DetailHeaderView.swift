@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailHeaderView: UIView {
-    private var labelStackView: UIStackView = {
+    lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
@@ -16,7 +16,7 @@ class DetailHeaderView: UIView {
         return stackView
     }()
     
-    private(set) lazy var wordLabel: UILabel = {
+    lazy var wordLabel: UILabel = {
         let label = UILabel()
         label.text = "Home"
         label.font = .boldSystemFont(ofSize: 35)
@@ -24,7 +24,7 @@ class DetailHeaderView: UIView {
         return label
     }()
     
-    private(set) lazy var pronounceLabel: UILabel = {
+    lazy var pronounceLabel: UILabel = {
         let label = UILabel()
         label.text = "h/(ascad)"
         label.font = .systemFont(ofSize: 17)
@@ -32,7 +32,7 @@ class DetailHeaderView: UIView {
         return label
     }()
     
-    private var audioButton: UIButton = {
+    lazy var audioButton: UIButton = {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
         button.setImage(.init(named: "pronaunciation"), for: .normal)
@@ -47,9 +47,6 @@ class DetailHeaderView: UIView {
         return collection
     }()
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -61,7 +58,6 @@ class DetailHeaderView: UIView {
     
     private func setupView() {
         backgroundColor = .systemGray6
-        
         addSubview(labelStackView)
         labelStackView.addArrangedSubview(wordLabel)
         labelStackView.addArrangedSubview(pronounceLabel)
@@ -88,6 +84,4 @@ class DetailHeaderView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
-    
 }
