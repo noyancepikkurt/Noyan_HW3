@@ -11,8 +11,15 @@ import DictionaryAPI
 final class DetailViewController: UIViewController {
     @IBOutlet private var detailTableView: UITableView!
     private let header = DetailHeaderView()
+    private let footer = DetailFooterView()
     private let viewModel: DetailViewModel
-    private var meaningModel = [Meaning]()
+    private var synonymModel = [SynonymModel]()
+    private var headerCollectionViewData = [Meaning]()
+    private var meaningModel: [Meaning]? {
+        didSet {
+            detailTableView.reloadData()
+        }
+    }
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
@@ -26,6 +33,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.fetchWordDetails()
+        viewModel.fetchSynonymWord()
         viewModel.delegate = self
         detailTableViewConfig()
     }
@@ -41,8 +49,16 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewModelProtocol {
+    func fetchedSynonymWords() {
+        guard let synonymModel = viewModel.synonymWords else { return }
+        self.synonymModel = synonymModel
+        detailTableView.reloadData()
+    }
+    
     func fetchedWordDetail() {
-        meaningModel = (viewModel.wordDetail?.meanings)!
+        guard let meanings = viewModel.wordDetail?.meanings else { return }
+        meaningModel = meanings
+        headerCollectionViewData = meanings
         detailTableView.reloadData()
     }
 }
@@ -50,6 +66,7 @@ extension DetailViewController: DetailViewModelProtocol {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var meaningCount = 0
+        guard let meaningModel = self.meaningModel else { return 0 }
         meaningModel.forEach { meaning in
             guard let definitions = meaning.definitions else { return }
             meaningCount += definitions.count
@@ -59,6 +76,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(cellType: DetailTableViewCell.self, indexPath: indexPath) as DetailTableViewCell
+        guard let meaningModel = self.meaningModel else { return UITableViewCell() }
         cell.setup(meaningModel, index: indexPath.row)
         return cell
     }
@@ -68,12 +86,35 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        header.delegate = self
         header.wordLabel.text = viewModel.selectedWord.capitalized
         header.pronounceLabel.text = viewModel.wordDetail?.phonetic
+        header.configure(headerCollectionViewData)
         return header
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let sortedArray = synonymModel.sorted { $0.score! > $1.score! }
+        let topFiveSynonyms = Array(sortedArray.prefix(5))
+        footer.configure(topFiveSynonyms)
+        return footer
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 150
+        return 140
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 145
+    }
+}
+
+extension DetailViewController: HeaderViewDelegate {
+    func didSelectCollectionCell(partOfSpeech: String) {
+        guard let meaningModel = self.meaningModel else { return }
+        let filteredPartOfSpeech = meaningModel.filter { meaning in
+            meaning.partOfSpeech == partOfSpeech
+        }
+        self.meaningModel = filteredPartOfSpeech
     }
 }

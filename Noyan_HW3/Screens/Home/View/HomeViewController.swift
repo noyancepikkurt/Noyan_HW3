@@ -42,7 +42,8 @@ final class HomeViewController: UIViewController {
     }
     
     @objc func searchViewTapped() {
-        viewModel.checkWordAPI(searchedWord: searchTextField.text ?? "testttt")
+        guard let searchText = searchTextField.text else { return }
+        viewModel.checkWordAPI(searchedWord: searchText)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -85,7 +86,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: HomeViewModelProtocol {
     func fetchSuccessWord() {
-        viewModel.saveAndFetchWord(searchText: searchTextField.text ?? "")
+        guard let searchText = searchTextField.text else { return }
+        viewModel.saveAndFetchWord(searchText: searchText)
         guard let successWord = viewModel.successWord else { return }
         let detailViewModel = DetailViewModel(selectedWord: successWord)
         let detailVC = DetailViewController(viewModel: detailViewModel)
@@ -97,8 +99,7 @@ extension HomeViewController: HomeViewModelProtocol {
     }
     
     func didOccurError(_ error: Error) {
-        UIAlertController.alertMessage(title: "Error", message: "There is no word ", vc: self)
+        UIAlertController.alertMessage(title: "Sorry", message: "There is no such word in the dictionary", vc: self)
+        searchTextField.text = ""
     }
-    
-    
 }

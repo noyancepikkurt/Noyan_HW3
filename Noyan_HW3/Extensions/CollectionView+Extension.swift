@@ -7,15 +7,13 @@
 
 import UIKit
 
-extension UITableView {
-    func register(cellType: UITableViewCell.Type) {
-        register(cellType.nib, forCellReuseIdentifier: cellType.identifier)
+extension UICollectionView {
+    func register(cellType: UICollectionViewCell.Type) {
+        register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
     }
     
-    func dequeueReusableCell<T: UITableViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath) as? T else {
-            fatalError("Could not dequeue cell with identifier: \(cellType.identifier)")
-        }
+    func dequeCell<T: UICollectionViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? T else { fatalError("error")}
         return cell
     }
 }

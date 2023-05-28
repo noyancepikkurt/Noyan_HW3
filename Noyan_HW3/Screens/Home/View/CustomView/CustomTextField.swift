@@ -38,7 +38,6 @@ final class CustomTextField: UITextField {
         setupConstraints()
     }
 
-    
     func addSubview() {
             self.addSubview(leftImageView)
         }

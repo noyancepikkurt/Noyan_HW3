@@ -19,16 +19,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dictionary" translatesAutoresizingMaskIntoConstraints="NO" id="w2O-j7-GNJ">
-                    <rect key="frame" x="83" y="279" width="227" height="226"/>
+                    <rect key="frame" x="83" y="139" width="227" height="512"/>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="w2O-j7-GNJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0zq-eD-Ybi"/>
-                <constraint firstItem="w2O-j7-GNJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="83" id="SH6-p9-q4U"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="w2O-j7-GNJ" secondAttribute="bottom" constant="313" id="g4F-Wi-cfR"/>
-                <constraint firstItem="w2O-j7-GNJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="220" id="pAh-RN-waY"/>
+                <constraint firstItem="w2O-j7-GNJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="1pP-Qs-0VE"/>
+                <constraint firstItem="w2O-j7-GNJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="83" id="4l9-ch-oJg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w2O-j7-GNJ" secondAttribute="trailing" constant="83" id="XL9-uc-0WL"/>
+                <constraint firstItem="w2O-j7-GNJ" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.674572" id="muk-6c-uW9"/>
             </constraints>
             <point key="canvasLocation" x="122.90076335877862" y="20.422535211267608"/>
         </view>

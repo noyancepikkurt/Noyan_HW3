@@ -8,7 +8,7 @@
 import UIKit
 import DictionaryAPI
 
-class DetailTableViewCell: UITableViewCell {
+final class DetailTableViewCell: UITableViewCell {
     @IBOutlet private var numberLabel: UILabel!
     @IBOutlet private var partOfSpeechLabel: UILabel!
     @IBOutlet private var definitionsLabel: UILabel!

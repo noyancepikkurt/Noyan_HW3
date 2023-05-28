@@ -20,7 +20,7 @@ final class HomeViewModel {
     var successWord: String?
     
     func checkWordAPI(searchedWord: String) {
-        NetworkService.shared.fetchWord(pathUrl: "https://api.dictionaryapi.dev/api/v2/entries/en/\(searchedWord)") { [weak self] result in
+        NetworkService.shared.fetchWord(pathUrl: "\(NetworkURL.dictionaryURL.rawValue)\(searchedWord)") { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let success):
@@ -40,7 +40,7 @@ final class HomeViewModel {
                 self?.recentSearchArray = words
                 self?.delegate?.fetchWordFromCoreData()
             case .failure(let error):
-                print("Error fetching recent search data: \(error)")
+                print(error)
             }
         }
     }
