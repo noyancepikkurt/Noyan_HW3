@@ -11,9 +11,11 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            let homeViewController = HomeViewController()
+            if let navigationController = self.navigationController {
+                navigationController.setViewControllers([homeViewController], animated: true)
+            }
+        }
     }
-
-
-
 }

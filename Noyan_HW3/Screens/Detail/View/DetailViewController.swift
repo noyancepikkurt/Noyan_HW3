@@ -63,9 +63,13 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        header.wordLabel.text = "DENEME"
-        header.pronounceLabel.text = "TEST"
+        header.wordLabel.text = viewModel.selectedWord.capitalized
+        header.pronounceLabel.text = viewModel.wordDetail?.phonetic
         return header
     }
     

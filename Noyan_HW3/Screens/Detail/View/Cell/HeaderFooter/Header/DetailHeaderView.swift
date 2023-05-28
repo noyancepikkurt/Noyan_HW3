@@ -12,7 +12,7 @@ class DetailHeaderView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fill
-        stackView.spacing = 20
+        stackView.spacing = 0
         return stackView
     }()
     

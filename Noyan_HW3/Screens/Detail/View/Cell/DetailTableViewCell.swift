@@ -40,7 +40,7 @@ class DetailTableViewCell: UITableViewCell {
         }
         
         definitionsLabel.text = definitions[index].definition
-        partOfSpeechLabel.text = partOfSpeechArray[index]
+        partOfSpeechLabel.text = partOfSpeechArray[index].capitalized
         exampleLabel.text = exampleArray[index]
         numberLabel.text = "\(numberArray[index]) -"
     }
