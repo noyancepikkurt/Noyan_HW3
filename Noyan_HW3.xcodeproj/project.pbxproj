@@ -25,6 +25,7 @@
 		5D7FF4C52A237E5E0016557E /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7FF4C32A237E5E0016557E /* HeaderCollectionViewCell.xib */; };
 		5D949F532A2523E500C1E2AB /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D949F522A2523E500C1E2AB /* LoadingShowable.swift */; };
 		5D949F562A25240B00C1E2AB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D949F552A25240B00C1E2AB /* LoadingView.swift */; };
+		5D949F582A2534BB00C1E2AB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D949F572A2534BB00C1E2AB /* AVFoundation.framework */; };
 		5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD089AE2A2084A70058F356 /* AppDelegate.swift */; };
 		5DD089B82A2084A80058F356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B72A2084A80058F356 /* Assets.xcassets */; };
 		5DD089BB2A2084A80058F356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD089B92A2084A80058F356 /* LaunchScreen.storyboard */; };
@@ -64,6 +65,7 @@
 		5D7FF4C32A237E5E0016557E /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		5D949F522A2523E500C1E2AB /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
 		5D949F552A25240B00C1E2AB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		5D949F572A2534BB00C1E2AB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5DD089AB2A2084A70058F356 /* Noyan_HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noyan_HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD089AE2A2084A70058F356 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DD089B72A2084A80058F356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D949F582A2534BB00C1E2AB /* AVFoundation.framework in Frameworks */,
 				5D207B782A2210B70080011F /* DictionaryAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +104,7 @@
 		5D207B762A2210B70080011F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D949F572A2534BB00C1E2AB /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

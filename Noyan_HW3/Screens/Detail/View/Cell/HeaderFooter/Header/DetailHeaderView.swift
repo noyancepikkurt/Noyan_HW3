@@ -7,6 +7,8 @@
 
 import UIKit
 import DictionaryAPI
+import AVFoundation
+import Alamofire
 
 protocol HeaderViewDelegate: AnyObject {
     func didSelectCollectionCell(partOfSpeech: String)
@@ -41,6 +43,7 @@ final class DetailHeaderView: UIView {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
         button.setImage(.init(named: "pronaunciation"), for: .normal)
+        button.addTarget(self, action: #selector(audioButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -57,7 +60,8 @@ final class DetailHeaderView: UIView {
         collection.backgroundColor = .systemGray6
         return collection
     }()
-    
+    private var audioPlayer = AVAudioPlayer()
+    private var phonetics = [Phonetic]()
     weak var delegate: HeaderViewDelegate?
     
     private var meaningModel: [Meaning]? {
@@ -75,8 +79,32 @@ final class DetailHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ model: [Meaning]) {
+    func configure(_ model: [Meaning],_ phoneticModel: [Phonetic]) {
         self.meaningModel = model
+        self.phonetics = phoneticModel
+    }
+    
+    @objc func audioButtonTapped() {
+        guard let audioURL = URL(string: self.phonetics[0].audio  ?? "") else { return }
+        requestForAudio(audioURL)
+    }
+    
+    private func requestForAudio(_ url: URL) {
+        AF.request(url).responseData { response in
+            switch response.result {
+            case.success(let data):
+                DispatchQueue.main.async {
+                    do {
+                        self.audioPlayer = try AVAudioPlayer(data: data)
+                        self.audioPlayer.play()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(_):
+                break
+            }
+        }
     }
     
     private func setupView() {
@@ -133,5 +161,4 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
         guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech else { return }
         self.delegate?.didSelectCollectionCell(partOfSpeech: partOfSpeech)
     }
-    
 }

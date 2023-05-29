@@ -40,7 +40,7 @@ final class HomeViewModel {
                 self?.recentSearchArray = words
                 self?.delegate?.fetchWordFromCoreData()
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }

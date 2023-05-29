@@ -15,6 +15,7 @@ final class DetailViewController: UIViewController, LoadingShowable {
     private let viewModel: DetailViewModel
     private var synonymModel = [SynonymModel]()
     private var headerCollectionViewData = [Meaning]()
+    private var headerCollectionViewPhonetic = [Phonetic]()
     private var filteredArray =  [Meaning]()
     private var meaningModel: [Meaning]? {
         didSet {
@@ -58,9 +59,12 @@ extension DetailViewController: DetailViewModelProtocol {
     }
     
     func fetchedWordDetail() {
-        guard let meanings = viewModel.wordDetail?.meanings else { return }
-        meaningModel = meanings
-        headerCollectionViewData = meanings
+        guard let fetchWord = viewModel.wordDetail else { return }
+        guard let meaning = fetchWord.meanings else { return }
+        guard let phonetics = fetchWord.phonetics else { return }
+        meaningModel = meaning
+        headerCollectionViewData = meaning
+        headerCollectionViewPhonetic = phonetics
         detailTableView.reloadData()
         self.hideLoading()
     }
@@ -92,7 +96,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         header.delegate = self
         header.wordLabel.text = viewModel.selectedWord.capitalized
         header.pronounceLabel.text = viewModel.wordDetail?.phonetic
-        header.configure(headerCollectionViewData)
+        header.configure(headerCollectionViewData, headerCollectionViewPhonetic)
         return header
     }
     
