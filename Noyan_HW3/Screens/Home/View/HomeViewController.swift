@@ -41,26 +41,26 @@ final class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func searchViewTapped() {
+    @objc private func searchViewTapped() {
         guard let searchText = searchTextField.text else { return }
         viewModel.checkWordAPI(searchedWord: searchText)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-               let screenHeight = UIScreen.main.bounds.height
-               let bottomViewHeight = searchViewButton.frame.height
-               let bottomViewY = screenHeight - keyboardSize.height - bottomViewHeight
-               
-               if bottomViewY > 0 {
-                   searchViewButton.frame.origin.y = bottomViewY
-               }
-           }
-       }
-       
-       @objc func keyboardWillHide(notification: NSNotification) {
-           searchViewButton.frame.origin.y = UIScreen.main.bounds.height - searchViewButton.frame.height
-       }
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let screenHeight = UIScreen.main.bounds.height
+            let bottomViewHeight = searchViewButton.frame.height
+            let bottomViewY = screenHeight - keyboardSize.height - bottomViewHeight
+            
+            if bottomViewY > 0 {
+                searchViewButton.frame.origin.y = bottomViewY
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        searchViewButton.frame.origin.y = UIScreen.main.bounds.height - searchViewButton.frame.height
+    }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {

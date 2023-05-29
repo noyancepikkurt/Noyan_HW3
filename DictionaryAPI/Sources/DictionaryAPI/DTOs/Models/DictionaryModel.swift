@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - DictionaryModelElement
+// MARK: - DictionaryModel
 public struct DictionaryModel: Codable {
     public let word, phonetic: String?
     public let phonetics: [Phonetic]?
@@ -32,7 +32,7 @@ public struct Meaning: Codable {
 // MARK: - Definition
 public struct Definition: Codable {
     public let definition: String?
-//    public let synonyms: [JSONAny]?
+    //    public let synonyms: [JSONAny]?
     public let antonyms: [String]?
     public let example: String?
 }
@@ -43,7 +43,7 @@ public struct Phonetic: Codable {
     public let audio: String?
     public let sourceURL: String?
     public let license: License?
-
+    
     enum CodingKeys: String, CodingKey {
         case text, audio
         case sourceURL = "sourceUrl"
@@ -53,19 +53,19 @@ public struct Phonetic: Codable {
 
 class JSONCodingKey: CodingKey {
     let key: String
-
+    
     required init?(intValue: Int) {
         return nil
     }
-
+    
     required init?(stringValue: String) {
         key = stringValue
     }
-
+    
     var intValue: Int? {
         return nil
     }
-
+    
     var stringValue: String {
         return key
     }

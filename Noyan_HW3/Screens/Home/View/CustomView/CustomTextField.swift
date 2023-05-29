@@ -9,6 +9,8 @@ import UIKit
 
 final class CustomTextField: UITextField {
     
+    let placeholderInsets = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 10)
+    
     lazy var leftImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "search")
@@ -17,7 +19,6 @@ final class CustomTextField: UITextField {
         return imageView
     }()
     
-    let placeholderInsets = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 10)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +28,8 @@ final class CustomTextField: UITextField {
         super.init(coder: coder)
         configureView()
     }
-
     
-    func configureView() {
+    private func configureView() {
         self.placeholder = "Search"
         self.backgroundColor = .white
         self.layer.borderWidth = 0.5
@@ -37,14 +37,14 @@ final class CustomTextField: UITextField {
         addSubview()
         setupConstraints()
     }
-
-    func addSubview() {
-            self.addSubview(leftImageView)
-        }
     
-    func setupConstraints() {
-            leftImageViewConstraints()
-        }
+    private func addSubview() {
+        self.addSubview(leftImageView)
+    }
+    
+    private func setupConstraints() {
+        leftImageViewConstraints()
+    }
     
     private func leftImageViewConstraints() {
         leftImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ final class CustomTextField: UITextField {
             leftImageView.widthAnchor.constraint(equalTo: leftImageView.heightAnchor)
         ])
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = 8

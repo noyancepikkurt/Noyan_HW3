@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeTableViewCell: UITableViewCell {
-    @IBOutlet  var recentSearchLabel: UILabel!
+    @IBOutlet private var recentSearchLabel: UILabel!
     
     func setup(_ model: RecentSearchEntity) {
         recentSearchLabel.text = model.recentSearchWord?.capitalized

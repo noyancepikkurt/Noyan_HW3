@@ -31,7 +31,6 @@ final public class NetworkService: NetworkServiceProtocol {
             switch result {
             case .success(let synonym):
                 completion(.success(synonym))
-                print(synonym)
             case .failure(let failure):
                 completion(.failure(failure))
             }

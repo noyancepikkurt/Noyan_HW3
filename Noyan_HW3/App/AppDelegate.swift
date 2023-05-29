@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NavigationHelper.initializeApp()
         return true
     }
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RecentSearchModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

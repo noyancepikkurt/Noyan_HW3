@@ -44,6 +44,4 @@ final class DetailTableViewCell: UITableViewCell {
         exampleLabel.text = exampleArray[index]
         numberLabel.text = "\(numberArray[index]) -"
     }
-
-    
 }

@@ -39,10 +39,10 @@ final class DetailViewController: UIViewController {
     }
     
     private func detailTableViewConfig() {
+        detailTableView.register(cellType: DetailTableViewCell.self)
         detailTableView.delegate = self
         detailTableView.dataSource = self
         detailTableView.bounces = false
-        detailTableView.register(cellType: DetailTableViewCell.self)
         detailTableView.rowHeight = UITableView.automaticDimension
         detailTableView.estimatedRowHeight = 100
     }
@@ -101,11 +101,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 140
+        return UIScreen.main.bounds.height / 5
     }
     
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 145
+        return UIScreen.main.bounds.height / 6
     }
 }
 

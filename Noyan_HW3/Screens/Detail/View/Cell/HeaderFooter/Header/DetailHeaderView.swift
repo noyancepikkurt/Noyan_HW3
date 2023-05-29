@@ -46,7 +46,10 @@ final class DetailHeaderView: UIView {
     
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 75)
+        let screenWidth = UIScreen.main.bounds.width
+        let itemWidth = screenWidth / 4
+        let itemHeight = itemWidth * 0.4
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.showsHorizontalScrollIndicator = false
@@ -79,31 +82,31 @@ final class DetailHeaderView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(cellType: HeaderCollectionViewCell.self)
-        backgroundColor = .systemGray6
         addSubview(labelStackView)
-        labelStackView.addArrangedSubview(wordLabel)
-        labelStackView.addArrangedSubview(pronounceLabel)
         addSubview(audioButton)
         addSubview(collectionView)
+        labelStackView.addArrangedSubview(wordLabel)
+        labelStackView.addArrangedSubview(pronounceLabel)
         audioButton.translatesAutoresizingMaskIntoConstraints = false
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .systemGray6
         
         NSLayoutConstraint.activate([
             audioButton.centerYAnchor.constraint(equalTo: self.labelStackView.centerYAnchor),
-            audioButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            audioButton.heightAnchor.constraint(equalToConstant: 80),
-            audioButton.widthAnchor.constraint(equalToConstant: 80),
+            audioButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10),
+            audioButton.heightAnchor.constraint(equalToConstant: 100),
+            audioButton.widthAnchor.constraint(equalToConstant: 100),
             
             labelStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             labelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            labelStackView.heightAnchor.constraint(equalToConstant: 82),
-            labelStackView.trailingAnchor.constraint(equalTo: self.audioButton.leadingAnchor, constant: -15),
+            labelStackView.heightAnchor.constraint(equalToConstant: 70),
+            labelStackView.trailingAnchor.constraint(equalTo: self.audioButton.leadingAnchor, constant: -8),
             
-            collectionView.topAnchor.constraint(equalTo: self.labelStackView.bottomAnchor, constant: 8),
+            collectionView.topAnchor.constraint(equalTo: self.labelStackView.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
 }

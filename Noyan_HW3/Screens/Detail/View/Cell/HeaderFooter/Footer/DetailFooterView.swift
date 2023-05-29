@@ -24,6 +24,7 @@ final class DetailFooterView: UIView {
         layout.minimumInteritemSpacing = 8
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
+        collection.showsHorizontalScrollIndicator = false
         return collection
     }()
     
@@ -32,7 +33,7 @@ final class DetailFooterView: UIView {
             collectionView.reloadData()
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -47,33 +48,31 @@ final class DetailFooterView: UIView {
     }
     
     private func setupView() {
-        let lineView = UIView()
-        lineView.backgroundColor = .systemGray6
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(cellType: FooterCollectionViewCell.self)
-        backgroundColor = .white
+        let lineView = UIView()
         addSubview(lineView)
         addSubview(synonymLabel)
         addSubview(collectionView)
         synonymLabel.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         lineView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .white
+        lineView.backgroundColor = .systemGray6
         
         NSLayoutConstraint.activate([
             lineView.topAnchor.constraint(equalTo: self.topAnchor),
             lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1)
-        ])
-        
-        NSLayoutConstraint.activate([
+            lineView.heightAnchor.constraint(equalToConstant: 1),
+            
             synonymLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 8),
             synonymLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             synonymLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 16),
             synonymLabel.heightAnchor.constraint(equalToConstant: 22),
             
-            collectionView.topAnchor.constraint(equalTo: self.synonymLabel.bottomAnchor, constant: 8),
+            collectionView.topAnchor.constraint(equalTo: self.synonymLabel.bottomAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
