@@ -85,8 +85,14 @@ final class DetailHeaderView: UIView {
     }
     
     @objc func audioButtonTapped() {
-        guard let audioURL = URL(string: self.phonetics[0].audio  ?? "") else { return }
-        requestForAudio(audioURL)
+        var audioURL: URL?
+        if self.phonetics[0].audio == "" {
+            audioURL = URL(string: self.phonetics[1].audio ?? "")
+        } else {
+            audioURL = URL(string: self.phonetics[0].audio ?? "")
+        }
+        guard let audio = audioURL else { return }
+        requestForAudio(audio)
     }
     
     private func requestForAudio(_ url: URL) {
