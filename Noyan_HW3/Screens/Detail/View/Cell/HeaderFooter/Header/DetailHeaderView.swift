@@ -52,6 +52,7 @@ final class DetailHeaderView: UIView {
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.allowsMultipleSelection = true
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .systemGray6
         return collection

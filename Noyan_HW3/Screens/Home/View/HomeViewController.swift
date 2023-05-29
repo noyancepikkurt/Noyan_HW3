@@ -23,7 +23,6 @@ final class HomeViewController: UIViewController {
         searchViewButtonConfig()
     }
     
-    
     private func tableViewConfig() {
         recentSearchTableView.register(cellType: HomeTableViewCell.self)
         recentSearchTableView.delegate = self
@@ -80,6 +79,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         guard let recentSearchWord = selectedWord.recentSearchWord else { return }
         let detailViewModel = DetailViewModel(selectedWord: recentSearchWord)
         let detailVC = DetailViewController(viewModel: detailViewModel)
+        searchTextField.text = ""
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

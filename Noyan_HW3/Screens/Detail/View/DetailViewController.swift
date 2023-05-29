@@ -8,13 +8,14 @@
 import UIKit
 import DictionaryAPI
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private var detailTableView: UITableView!
     private let header = DetailHeaderView()
     private let footer = DetailFooterView()
     private let viewModel: DetailViewModel
     private var synonymModel = [SynonymModel]()
     private var headerCollectionViewData = [Meaning]()
+    private var filteredArray =  [Meaning]()
     private var meaningModel: [Meaning]? {
         didSet {
             detailTableView.reloadData()
@@ -32,6 +33,7 @@ final class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showLoading()
         viewModel.fetchWordDetails()
         viewModel.fetchSynonymWord()
         viewModel.delegate = self
@@ -60,6 +62,7 @@ extension DetailViewController: DetailViewModelProtocol {
         meaningModel = meanings
         headerCollectionViewData = meanings
         detailTableView.reloadData()
+        self.hideLoading()
     }
 }
 
@@ -113,9 +116,17 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension DetailViewController: HeaderViewDelegate {
     func didSelectCollectionCell(partOfSpeech: String) {
         guard let meaningModel = self.meaningModel else { return }
-        let filteredPartOfSpeech = meaningModel.filter { meaning in
-            meaning.partOfSpeech == partOfSpeech
+        if filteredArray.isEmpty == true {
+            let filteredPartOfSpeech =  meaningModel.filter { meaning in
+                meaning.partOfSpeech == partOfSpeech
+            }
+            filteredArray.append(filteredPartOfSpeech[0])
+            self.meaningModel = filteredArray
+        } else {
+            self.meaningModel = meaningModel
+            filteredArray.removeAll()
         }
-        self.meaningModel = filteredPartOfSpeech
+        
+        print("TEST\(meaningModel)")
     }
 }
