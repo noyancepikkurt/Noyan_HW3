@@ -8,6 +8,10 @@
 import UIKit
 import DictionaryAPI
 
+protocol DetailFooterProtocol {
+    func didSelectSynonymWord(_ synonymWord: String)
+}
+
 final class DetailFooterView: UIView {
     lazy var synonymLabel: UILabel = {
         let label = UILabel()
@@ -27,6 +31,8 @@ final class DetailFooterView: UIView {
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
+    
+    var delegate: DetailFooterProtocol?
     
     private var synonymWords: [SynonymModel]? {
         didSet {

@@ -233,9 +233,9 @@
 		5DD5433B2A20856C0087FCA2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5D949F542A2523FA00C1E2AB /* LoadingIndicator */,
 				5DD543732A20C8330087FCA2 /* Detail */,
 				5DD543532A20A45B0087FCA2 /* Home */,
+				5D949F542A2523FA00C1E2AB /* LoadingIndicator */,
 				5DD543492A208D6D0087FCA2 /* Splash */,
 			);
 			path = Screens;

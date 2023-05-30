@@ -55,11 +55,11 @@ final class DetailHeaderView: UIView {
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.allowsMultipleSelection = true
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .systemGray6
         return collection
     }()
+    
     private var audioPlayer = AVAudioPlayer()
     private var phonetics = [Phonetic]()
     weak var delegate: HeaderViewDelegate?
@@ -67,6 +67,12 @@ final class DetailHeaderView: UIView {
     private var meaningModel: [Meaning]? {
         didSet {
             self.collectionView.reloadData()
+        }
+    }
+    
+    private var selectedCellIndexPath: IndexPath? {
+        didSet {
+            collectionView.reloadData()
         }
     }
     
@@ -150,6 +156,11 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: HeaderCollectionViewCell.self, indexPath: indexPath) as HeaderCollectionViewCell
         guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech else  { return UICollectionViewCell() }
+        if indexPath == selectedCellIndexPath {
+            cell.contentView.layer.borderColor = UIColor.blue.cgColor
+        } else {
+            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        }
         cell.setup(partOfSpeech)
         return cell
     }
@@ -166,5 +177,10 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech else { return }
         self.delegate?.didSelectCollectionCell(partOfSpeech: partOfSpeech)
+        if indexPath == selectedCellIndexPath {
+            selectedCellIndexPath = nil
+        } else {
+            selectedCellIndexPath = indexPath
+        }
     }
 }

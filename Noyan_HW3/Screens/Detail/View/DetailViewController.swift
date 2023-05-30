@@ -16,7 +16,12 @@ final class DetailViewController: UIViewController, LoadingShowable {
     private var synonymModel = [SynonymModel]()
     private var headerCollectionViewData = [Meaning]()
     private var headerCollectionViewPhonetic = [Phonetic]()
-    private var filteredArray =  [Meaning]()
+    private var partOfSpeechFilter: String? = nil
+    private var filterModel:  [Meaning]? {
+        didSet {
+            detailTableView.reloadData()
+        }
+    }
     private var meaningModel: [Meaning]? {
         didSet {
             detailTableView.reloadData()
@@ -63,6 +68,7 @@ extension DetailViewController: DetailViewModelProtocol {
         guard let meaning = fetchWord.meanings else { return }
         guard let phonetics = fetchWord.phonetics else { return }
         meaningModel = meaning
+        filterModel = meaning
         headerCollectionViewData = meaning
         headerCollectionViewPhonetic = phonetics
         detailTableView.reloadData()
@@ -119,18 +125,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: HeaderViewDelegate {
     func didSelectCollectionCell(partOfSpeech: String) {
-        guard let meaningModel = self.meaningModel else { return }
-        if filteredArray.isEmpty == true {
-            let filteredPartOfSpeech =  meaningModel.filter { meaning in
+        guard let meaningModel = self.filterModel else { return }
+        if self.partOfSpeechFilter == partOfSpeech {
+            self.meaningModel = meaningModel
+            self.partOfSpeechFilter = nil
+        } else {
+            let filteredPartOfSpeech = meaningModel.filter { meaning in
                 meaning.partOfSpeech == partOfSpeech
             }
-            filteredArray.append(filteredPartOfSpeech[0])
-            self.meaningModel = filteredArray
-        } else {
-            self.meaningModel = meaningModel
-            filteredArray.removeAll()
+            self.meaningModel = filteredPartOfSpeech
+            self.partOfSpeechFilter = partOfSpeech
         }
-        
-        print("TEST\(meaningModel)")
     }
 }
