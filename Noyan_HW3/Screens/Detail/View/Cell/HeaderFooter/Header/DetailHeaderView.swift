@@ -105,20 +105,9 @@ final class DetailHeaderView: UIView {
     }
     
     private func requestForAudio(_ url: URL) {
-        AF.request(url).responseData { response in
-            switch response.result {
-            case.success(let data):
-                DispatchQueue.main.async {
-                    do {
-                        self.audioPlayer = try AVAudioPlayer(data: data)
-                        self.audioPlayer.play()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-            case .failure(_):
-                break
-            }
+        NetworkService.shared.requestAudio(url: url) { audioPlay in
+            self.audioPlayer = audioPlay
+            self.audioPlayer.play()
         }
     }
     

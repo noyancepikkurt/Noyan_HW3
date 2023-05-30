@@ -13,20 +13,7 @@ final class DetailViewController: UIViewController, LoadingShowable {
     private let header = DetailHeaderView()
     private let footer = DetailFooterView()
     private let viewModel: DetailViewModel
-    private var synonymModel = [SynonymModel]()
-    private var headerCollectionViewData = [Meaning]()
-    private var headerCollectionViewPhonetic = [Phonetic]()
-    private var partOfSpeechFilter: String? = nil
-    private var filterModel:  [Meaning]? {
-        didSet {
-            detailTableView.reloadData()
-        }
-    }
-    private var meaningModel: [Meaning]? {
-        didSet {
-            detailTableView.reloadData()
-        }
-    }
+    
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
@@ -62,21 +49,20 @@ final class DetailViewController: UIViewController, LoadingShowable {
     }
 }
 
-extension DetailViewController: DetailViewModelProtocol {    
-    func fetchedSynonymWords() {
-        guard let synonymModel = viewModel.synonymWords else { return }
-        self.synonymModel = synonymModel
+extension DetailViewController: DetailViewModelProtocol {
+    func filteredMeanings() {
         detailTableView.reloadData()
     }
     
+    func fetchedSynonymWords() {
+        detailTableView.reloadData()
+    }
+    
+    func didOccurError(_ error: Error) {
+        self.hideLoading()
+    }
+    
     func fetchedWordDetail() {
-        guard let fetchWord = viewModel.wordDetail else { return }
-        guard let meaning = fetchWord.meanings else { return }
-        guard let phonetics = fetchWord.phonetics else { return }
-        meaningModel = meaning
-        filterModel = meaning
-        headerCollectionViewData = meaning
-        headerCollectionViewPhonetic = phonetics
         detailTableView.reloadData()
         self.hideLoading()
     }
@@ -84,19 +70,17 @@ extension DetailViewController: DetailViewModelProtocol {
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var meaningCount = 0
-        guard let meaningModel = self.meaningModel else { return 0 }
-        meaningModel.forEach { meaning in
-            guard let definitions = meaning.definitions else { return }
-            meaningCount += definitions.count
-        }
-        return meaningCount
+        viewModel.numberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(cellType: DetailTableViewCell.self, indexPath: indexPath) as DetailTableViewCell
-        guard let meaningModel = self.meaningModel else { return UITableViewCell() }
-        cell.setup(meaningModel, index: indexPath.row)
+        if let filteredModel = viewModel.filteredMeanings {
+            cell.setup(filteredModel, index: indexPath.row)
+        } else {
+            guard let meaningModel = viewModel.wordDetail?.meanings else { return UITableViewCell() }
+            cell.setup(meaningModel, index: indexPath.row)
+        }
         return cell
     }
     
@@ -108,12 +92,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         header.delegate = self
         header.wordLabel.text = viewModel.selectedWord.capitalized
         header.pronounceLabel.text = viewModel.wordDetail?.phonetic
+        guard let headerCollectionViewData = viewModel.wordDetail?.meanings, let headerCollectionViewPhonetic = viewModel.wordDetail?.phonetics else { return nil}
         header.configure(headerCollectionViewData, headerCollectionViewPhonetic)
         return header
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let sortedArray = synonymModel.sorted { $0.score! > $1.score! }
+        let sortedArray = viewModel.synonymWords?.sorted { $0.score! > $1.score! }
+        guard let sortedArray else { return nil }
         let topFiveSynonyms = Array(sortedArray.prefix(5))
         footer.configure(topFiveSynonyms)
         return footer
@@ -130,24 +116,20 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
+    func didSelectCollectionCell(partOfSpeech: String) {
+        viewModel.didSelectCollectionCell(partOfSpeech: partOfSpeech)
+    }
+    
     func didSelectSynonymWord(_ synonymWord: String) {
         let synonymWordByRemovingWhitespaces = synonymWord.replacingOccurrences(of: " ", with: "")
         let viewModel = DetailViewModel(selectedWord: synonymWordByRemovingWhitespaces)
-        let detailViewController = DetailViewController(viewModel: viewModel)
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-    
-    func didSelectCollectionCell(partOfSpeech: String) {
-        guard let meaningModel = self.filterModel else { return }
-        if self.partOfSpeechFilter == partOfSpeech {
-            self.meaningModel = meaningModel
-            self.partOfSpeechFilter = nil
-        } else {
-            let filteredPartOfSpeech = meaningModel.filter { meaning in
-                meaning.partOfSpeech == partOfSpeech
+        viewModel.fetchWordDetails { value in
+            if value {
+                let detailViewController = DetailViewController(viewModel: viewModel)
+                self.navigationController?.pushViewController(detailViewController, animated: true)
+            } else {
+                UIAlertController.alertMessage(title: "sorry", message: "no message", vc: self)
             }
-            self.meaningModel = filteredPartOfSpeech
-            self.partOfSpeechFilter = partOfSpeech
         }
     }
 }

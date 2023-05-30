@@ -11,6 +11,8 @@ import DictionaryAPI
 protocol DetailViewModelProtocol where Self: DetailViewController {
     func fetchedWordDetail()
     func fetchedSynonymWords()
+    func didOccurError(_ error: Error)
+    func filteredMeanings()
 }
 
 final class DetailViewModel {
@@ -19,19 +21,24 @@ final class DetailViewModel {
     var synonymWords: [SynonymModel]?
     weak var delegate: DetailViewModelProtocol?
     
+    var filteredMeanings: [Meaning]?
+    private var partOfSpeechFilter: String? = nil
+    
     init(selectedWord: String) {
         self.selectedWord = selectedWord
     }
     
-    func fetchWordDetails() {
+    func fetchWordDetails(completion: ((Bool) -> Void)? = nil) {
         NetworkService.shared.fetchWord(pathUrl: "\(NetworkURL.dictionaryURL.rawValue)\(selectedWord)") { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let wordModel):
                 self.wordDetail = wordModel
                 self.delegate?.fetchedWordDetail()
-            case .failure(_):
-                break
+                completion?(true)
+            case .failure(let error):
+                self.delegate?.didOccurError(error)
+                completion?(false)
             }
         }
     }
@@ -47,5 +54,37 @@ final class DetailViewModel {
                 break
             }
         }
+    }
+    
+    func didSelectCollectionCell(partOfSpeech: String) {
+        guard let meaningModel = self.wordDetail?.meanings else { return }
+        if self.partOfSpeechFilter == partOfSpeech {
+            self.filteredMeanings = meaningModel
+            self.partOfSpeechFilter = nil
+        } else {
+            let filteredPartOfSpeech = meaningModel.filter { meaning in
+                meaning.partOfSpeech == partOfSpeech
+            }
+            self.filteredMeanings = filteredPartOfSpeech
+            self.partOfSpeechFilter = partOfSpeech
+        }
+        self.delegate?.filteredMeanings()
+    }
+    
+    func numberOfItems() -> Int {
+        var meaningCount = 0
+        if let filteredModel = filteredMeanings {
+            filteredModel.forEach { meaning in
+                guard let definitions = meaning.definitions else { return }
+                meaningCount += definitions.count
+            }
+        } else {
+            guard let meaningModel = wordDetail?.meanings else { return 0 }
+            meaningModel.forEach { meaning in
+                guard let definitions = meaning.definitions else { return }
+                meaningCount += definitions.count
+            }
+        }
+        return meaningCount
     }
 }
