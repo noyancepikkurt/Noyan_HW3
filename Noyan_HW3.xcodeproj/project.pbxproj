@@ -34,7 +34,7 @@
 		5DD543422A2085CC0087FCA2 /* TableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543412A2085CC0087FCA2 /* TableViewCell+Extension.swift */; };
 		5DD543442A2085E70087FCA2 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */; };
 		5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543452A2086000087FCA2 /* UIView+Extension.swift */; };
-		5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543472A2086500087FCA2 /* Collection+Extension.swift */; };
+		5DD543482A2086500087FCA2 /* NilorEmpty+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543472A2086500087FCA2 /* NilorEmpty+.swift */; };
 		5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5434C2A208D940087FCA2 /* SplashViewController.swift */; };
 		5DD5434F2A208D940087FCA2 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DD5434D2A208D940087FCA2 /* SplashViewController.xib */; };
 		5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD543512A20961D0087FCA2 /* NavigationHelper.swift */; };
@@ -76,7 +76,7 @@
 		5DD543412A2085CC0087FCA2 /* TableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		5DD543432A2085E70087FCA2 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 		5DD543452A2086000087FCA2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		5DD543472A2086500087FCA2 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		5DD543472A2086500087FCA2 /* NilorEmpty+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NilorEmpty+.swift"; sourceTree = "<group>"; };
 		5DD5434C2A208D940087FCA2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5DD5434D2A208D940087FCA2 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		5DD543512A20961D0087FCA2 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				5DD5433D2A2085950087FCA2 /* AlertExtension.swift */,
-				5DD543472A2086500087FCA2 /* Collection+Extension.swift */,
+				5DD543472A2086500087FCA2 /* NilorEmpty+.swift */,
 				5DD5433F2A2085B70087FCA2 /* TableView+Extension.swift */,
 				5DD543412A2085CC0087FCA2 /* TableViewCell+Extension.swift */,
 				5D7FF4B72A2374A70016557E /* CollectionView+Extension.swift */,
@@ -447,7 +447,7 @@
 				5DD089AF2A2084A70058F356 /* AppDelegate.swift in Sources */,
 				5D65312A2A20D7DB00C4919F /* DetailViewModel.swift in Sources */,
 				5DD543402A2085B70087FCA2 /* TableView+Extension.swift in Sources */,
-				5DD543482A2086500087FCA2 /* Collection+Extension.swift in Sources */,
+				5DD543482A2086500087FCA2 /* NilorEmpty+.swift in Sources */,
 				5DD543522A20961D0087FCA2 /* NavigationHelper.swift in Sources */,
 				5D7FF4B22A236AD60016557E /* DetailFooterView.swift in Sources */,
 				5D7FF4B82A2374A70016557E /* CollectionView+Extension.swift in Sources */,

@@ -132,7 +132,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
     func didSelectSynonymWord(_ synonymWord: String) {
         let synonymWordByRemovingWhitespaces = synonymWord.replacingOccurrences(of: " ", with: "")
-        print(synonymWordByRemovingWhitespaces)
         let viewModel = DetailViewModel(selectedWord: synonymWordByRemovingWhitespaces)
         let detailViewController = DetailViewController(viewModel: viewModel)
         navigationController?.pushViewController(detailViewController, animated: true)

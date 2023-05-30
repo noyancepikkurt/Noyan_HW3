@@ -187,13 +187,3 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
 }
-
-
-extension Optional where Wrapped == String {
-    func isNilOrEmpty() -> Bool {
-        if let self = self {
-            return self.isEmpty
-        }
-        return true
-    }
-}

@@ -92,6 +92,7 @@ extension HomeViewController: HomeViewModelProtocol {
         let detailViewModel = DetailViewModel(selectedWord: successWord)
         let detailVC = DetailViewController(viewModel: detailViewModel)
         navigationController?.pushViewController(detailVC, animated: true)
+        searchTextField.text = ""
     }
     
     func fetchWordFromCoreData() {

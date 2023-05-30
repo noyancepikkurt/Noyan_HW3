@@ -29,7 +29,7 @@ final class DataPersistenceManager {
                 newSearch.recentSearchWord = model
                 
                 if recentSearches.count >= self.maxRecentSearchCount {
-                    let oldestSearch = recentSearches.removeFirst()
+                    let oldestSearch = recentSearches.removeLast()
                     context.delete(oldestSearch)
                 }
                 recentSearches.append(newSearch)
