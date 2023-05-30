@@ -98,4 +98,8 @@ extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource
         guard let synonymCount = synonymWords?.count else  { return 0 }
         return synonymCount
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.didSelectSynonymWord(synonymWords?[indexPath.item].word ?? "test")
+    }
 }

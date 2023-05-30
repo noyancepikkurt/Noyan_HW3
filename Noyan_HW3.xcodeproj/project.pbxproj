@@ -122,6 +122,8 @@
 			children = (
 				5D207B8D2A221FC80080011F /* Header */,
 				5D207B8E2A221FD00080011F /* Footer */,
+				5D207B942A2242E10080011F /* DetailTableViewCell.swift */,
+				5D207B952A2242E10080011F /* DetailTableViewCell.xib */,
 			);
 			path = HeaderFooter;
 			sourceTree = "<group>";
@@ -148,8 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				5D207B842A221F0B0080011F /* HeaderFooter */,
-				5D207B942A2242E10080011F /* DetailTableViewCell.swift */,
-				5D207B952A2242E10080011F /* DetailTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

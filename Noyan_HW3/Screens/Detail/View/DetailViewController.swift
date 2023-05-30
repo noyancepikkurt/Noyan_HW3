@@ -42,7 +42,7 @@ final class DetailViewController: UIViewController, LoadingShowable {
         self.showLoading()
         viewModel.fetchWordDetails()
         viewModel.fetchSynonymWord()
-        viewModel.delegate = self
+        configDelegates()
         detailTableViewConfig()
     }
     
@@ -54,9 +54,15 @@ final class DetailViewController: UIViewController, LoadingShowable {
         detailTableView.rowHeight = UITableView.automaticDimension
         detailTableView.estimatedRowHeight = 100
     }
+    
+    private func configDelegates() {
+        viewModel.delegate = self
+        footer.delegate = self
+        navigationController?.delegate = self
+    }
 }
 
-extension DetailViewController: DetailViewModelProtocol {
+extension DetailViewController: DetailViewModelProtocol {    
     func fetchedSynonymWords() {
         guard let synonymModel = viewModel.synonymWords else { return }
         self.synonymModel = synonymModel
@@ -123,7 +129,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DetailViewController: HeaderViewDelegate {
+extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
+    func didSelectSynonymWord(_ synonymWord: String) {
+        let synonymWordByRemovingWhitespaces = synonymWord.replacingOccurrences(of: " ", with: "")
+        print(synonymWordByRemovingWhitespaces)
+        let viewModel = DetailViewModel(selectedWord: synonymWordByRemovingWhitespaces)
+        let detailViewController = DetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     func didSelectCollectionCell(partOfSpeech: String) {
         guard let meaningModel = self.filterModel else { return }
         if self.partOfSpeechFilter == partOfSpeech {
@@ -136,5 +150,18 @@ extension DetailViewController: HeaderViewDelegate {
             self.meaningModel = filteredPartOfSpeech
             self.partOfSpeechFilter = partOfSpeech
         }
+    }
+}
+
+extension DetailViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let backButtonImage = UIImage(named: "left-arrow")
+        self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
+        self.navigationItem.leftBarButtonItem?.tintColor = .darkGray
+    }
+
+    @objc func backButtonTapped() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

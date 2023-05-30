@@ -92,8 +92,11 @@ final class DetailHeaderView: UIView {
     
     @objc func audioButtonTapped() {
         var audioURL: URL?
+        
         if self.phonetics[0].audio == "" {
-            audioURL = URL(string: self.phonetics[1].audio ?? "")
+            if let test = self.phonetics.first(where: { phonetic in phonetic.audio.isNilOrEmpty() == false }) {
+                audioURL = URL(string: test.audio ?? "")
+            }
         } else {
             audioURL = URL(string: self.phonetics[0].audio ?? "")
         }
@@ -182,5 +185,15 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
         } else {
             selectedCellIndexPath = indexPath
         }
+    }
+}
+
+
+extension Optional where Wrapped == String {
+    func isNilOrEmpty() -> Bool {
+        if let self = self {
+            return self.isEmpty
+        }
+        return true
     }
 }
