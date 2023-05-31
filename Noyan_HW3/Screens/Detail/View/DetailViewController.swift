@@ -14,7 +14,6 @@ final class DetailViewController: UIViewController, LoadingShowable {
     private let footer = DetailFooterView()
     private let viewModel: DetailViewModel
     
-    
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -92,23 +91,21 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         header.delegate = self
         header.wordLabel.text = viewModel.selectedWord.capitalized
         header.pronounceLabel.text = viewModel.wordDetail?.phonetic
-        guard let headerCollectionViewData = viewModel.wordDetail?.meanings, let headerCollectionViewPhonetic = viewModel.wordDetail?.phonetics else { return nil}
+        guard let headerCollectionViewData = viewModel.wordDetail?.meanings,
+              let headerCollectionViewPhonetic = viewModel.wordDetail?.phonetics else { return nil}
         header.configure(headerCollectionViewData, headerCollectionViewPhonetic)
         return header
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let sortedArray = viewModel.synonymWords?.sorted { $0.score! > $1.score! }
-        guard let sortedArray else { return nil }
-        let topFiveSynonyms = Array(sortedArray.prefix(5))
-        footer.configure(topFiveSynonyms)
+        let sortedArray = viewModel.sortSynonymTopFiveScores()
+        footer.configure(sortedArray)
         return footer
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UIScreen.main.bounds.height / 5
     }
-    
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return UIScreen.main.bounds.height / 6
@@ -135,7 +132,6 @@ extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
 }
 
 extension DetailViewController: UINavigationControllerDelegate {
-    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         let backButtonImage = UIImage(named: "left-arrow")
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))

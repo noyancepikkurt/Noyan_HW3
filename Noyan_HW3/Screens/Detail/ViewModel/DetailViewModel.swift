@@ -87,4 +87,11 @@ final class DetailViewModel {
         }
         return meaningCount
     }
+    
+    func sortSynonymTopFiveScores() -> [SynonymModel] {
+        let sortedArray = self.synonymWords?.sorted { $0.score! > $1.score! }
+        guard let sortedArray else { return [SynonymModel]() }
+        let topFiveSynonyms = Array(sortedArray.prefix(5))
+        return topFiveSynonyms
+    }
 }

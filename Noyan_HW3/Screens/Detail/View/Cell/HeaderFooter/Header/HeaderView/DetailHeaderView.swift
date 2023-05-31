@@ -91,18 +91,20 @@ final class DetailHeaderView: UIView {
     }
     
     @objc func audioButtonTapped() {
-        var audioURL: URL?
-        
-        if self.phonetics[0].audio == "" {
-            if let test = self.phonetics.first(where: { phonetic in phonetic.audio.isNilOrEmpty() == false }) {
-                audioURL = URL(string: test.audio ?? "")
-            }
-        } else {
-            audioURL = URL(string: self.phonetics[0].audio ?? "")
-        }
-        guard let audio = audioURL else { return }
-        requestForAudio(audio)
+        guard let audioURL = findValidAudioURL() else { return }
+        requestForAudio(audioURL)
     }
+
+    func findValidAudioURL() -> URL? {
+        if let firstNonEmptyAudio = phonetics.first(where: { !$0.audio.isNilOrEmpty() }) {
+            return URL(string: firstNonEmptyAudio.audio ?? "")
+        } else if !phonetics.isEmpty {
+            return URL(string: phonetics[0].audio ?? "")
+        } else {
+            return nil
+        }
+    }
+
     
     private func requestForAudio(_ url: URL) {
         NetworkService.shared.requestAudio(url: url) { audioPlay in
@@ -147,7 +149,7 @@ final class DetailHeaderView: UIView {
 extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: HeaderCollectionViewCell.self, indexPath: indexPath) as HeaderCollectionViewCell
-        guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech else  { return UICollectionViewCell() }
+        guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech?.capitalized else  { return UICollectionViewCell() }
         if indexPath == selectedCellIndexPath {
             cell.contentView.layer.borderColor = UIColor.blue.cgColor
         } else {

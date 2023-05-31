@@ -131,8 +131,7 @@
 		5D207B8D2A221FC80080011F /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				5D7FF4C12A237E530016557E /* HeaderCell */,
-				5D207B912A2237900080011F /* DetailHeaderView.swift */,
+				5DB22DD52A272928000C92B7 /* HeaderView */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -179,6 +178,15 @@
 				5D949F552A25240B00C1E2AB /* LoadingView.swift */,
 			);
 			path = LoadingIndicator;
+			sourceTree = "<group>";
+		};
+		5DB22DD52A272928000C92B7 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				5D7FF4C12A237E530016557E /* HeaderCell */,
+				5D207B912A2237900080011F /* DetailHeaderView.swift */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		5DD089A22A2084A70058F356 = {
