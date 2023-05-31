@@ -42,7 +42,7 @@ final class DetailHeaderView: UIView {
     lazy var audioButton: UIButton = {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
-        button.setImage(.init(named: "pronaunciation"), for: .normal)
+        button.setImage(.init(named: Icons.voiceButtonIcon.rawValue), for: .normal)
         button.addTarget(self, action: #selector(audioButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -105,7 +105,6 @@ final class DetailHeaderView: UIView {
         }
     }
 
-    
     private func requestForAudio(_ url: URL) {
         NetworkService.shared.requestAudio(url: url) { audioPlay in
             self.audioPlayer = audioPlay

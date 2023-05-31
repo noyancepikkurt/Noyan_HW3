@@ -99,6 +99,6 @@ extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.didSelectSynonymWord(synonymWords?[indexPath.item].word ?? "test")
+        self.delegate?.didSelectSynonymWord(synonymWords?[indexPath.item].word ?? "")
     }
 }

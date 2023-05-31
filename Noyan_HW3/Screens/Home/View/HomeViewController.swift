@@ -36,8 +36,14 @@ final class HomeViewController: UIViewController {
     }
     
     private func searchViewButtonSetUp() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     @objc private func searchViewTapped() {
@@ -100,7 +106,9 @@ extension HomeViewController: HomeViewModelProtocol {
     }
     
     func didOccurError(_ error: Error) {
-        UIAlertController.alertMessage(title: "Sorry", message: "There is no such word in the dictionary", vc: self)
+        UIAlertController.alertMessage(title: AlertMessage.ifNoSearchedWordTitle.rawValue,
+                                       message: AlertMessage.ifNoSearchedWordMessage.rawValue,
+                                       vc: self)
         searchTextField.text = ""
     }
 }

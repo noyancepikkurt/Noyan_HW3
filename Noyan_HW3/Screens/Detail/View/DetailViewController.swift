@@ -125,7 +125,9 @@ extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
                 let detailViewController = DetailViewController(viewModel: viewModel)
                 self.navigationController?.pushViewController(detailViewController, animated: true)
             } else {
-                UIAlertController.alertMessage(title: "sorry", message: "no message", vc: self)
+                UIAlertController.alertMessage(title: AlertMessage.ifNoSearchedWordTitle.rawValue,
+                                               message: AlertMessage.ifNoSearchedWordMessage.rawValue,
+                                               vc: self)
             }
         }
     }
@@ -133,7 +135,7 @@ extension DetailViewController: HeaderViewDelegate, DetailFooterProtocol {
 
 extension DetailViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let backButtonImage = UIImage(named: "left-arrow")
+        let backButtonImage = UIImage(named: Icons.backButtonIcon.rawValue)
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
         self.navigationItem.leftBarButtonItem?.tintColor = .darkGray
     }

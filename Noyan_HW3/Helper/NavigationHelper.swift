@@ -12,6 +12,7 @@ final class NavigationHelper {
         guard let navC = UIApplication.shared.windows.first?.rootViewController as? UINavigationController else { return nil }
         return navC.visibleViewController
     }
+    
     static func initializeApp() {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let navController = UINavigationController(rootViewController: SplashViewController())
