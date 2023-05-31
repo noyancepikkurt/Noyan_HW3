@@ -97,14 +97,14 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return header
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UIScreen.main.bounds.height / 5
+    }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sortedArray = viewModel.sortSynonymTopFiveScores()
         footer.configure(sortedArray)
         return footer
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UIScreen.main.bounds.height / 5
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -139,7 +139,7 @@ extension DetailViewController: UINavigationControllerDelegate {
         self.navigationItem.leftBarButtonItem =  UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
         self.navigationItem.leftBarButtonItem?.tintColor = .darkGray
     }
-
+    
     @objc func backButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
     }

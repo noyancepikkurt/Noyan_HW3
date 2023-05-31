@@ -140,7 +140,7 @@ final class DetailHeaderView: UIView {
             collectionView.topAnchor.constraint(equalTo: self.labelStackView.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2)
         ])
     }
 }
@@ -152,7 +152,7 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
         if indexPath == selectedCellIndexPath {
             cell.contentView.layer.borderColor = UIColor.blue.cgColor
         } else {
-            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+            cell.contentView.layer.borderColor = UIColor.lightGray.cgColor
         }
         cell.setup(partOfSpeech)
         return cell
