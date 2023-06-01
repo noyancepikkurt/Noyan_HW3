@@ -24,7 +24,7 @@ final class DetailFooterView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 4
+        layout.minimumInteritemSpacing = 3
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
         collection.showsHorizontalScrollIndicator = false

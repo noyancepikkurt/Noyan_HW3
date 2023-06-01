@@ -44,6 +44,10 @@ final class DetailHeaderView: UIView {
         button.imageView?.contentMode = .scaleAspectFill
         button.setImage(.init(named: Icons.voiceButtonIcon.rawValue), for: .normal)
         button.addTarget(self, action: #selector(audioButtonTapped), for: .touchUpInside)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowOpacity = 0.25
+        button.layer.shadowRadius = 4
         return button
     }()
     
@@ -117,8 +121,8 @@ final class DetailHeaderView: UIView {
             
             collectionView.topAnchor.constraint(equalTo: self.labelStackView.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2)
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2),
         ])
     }
 }
