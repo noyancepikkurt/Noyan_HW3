@@ -15,8 +15,8 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         viewModel.delegate = self
+        self.hideKeyboardWhenTappedAround()
         viewModel.fetchAllRecentWords()
         searchViewButtonSetUp()
         tableViewConfig()

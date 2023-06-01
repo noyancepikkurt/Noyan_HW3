@@ -7,15 +7,28 @@
 
 import UIKit
 
-final class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController, SplashViewModelProtocol {
+    private let viewModel = SplashViewModel()
+    private var connectionStatus: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-            let homeViewController = HomeViewController()
-            if let navigationController = self.navigationController {
-                navigationController.setViewControllers([homeViewController], animated: true)
+        viewModel.delegate = self
+        viewModel.checkInternetStatus()
+        
+        if connectionStatus {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                let homeViewController = HomeViewController()
+                if let navigationController = self.navigationController {
+                    navigationController.setViewControllers([homeViewController], animated: true)
+                }
             }
+        } else {
+            UIAlertController.alertMessage(title: AlertMessage.noInternetAlertTitle.rawValue, message: AlertMessage.noInternetAlertMessage.rawValue, vc: self)
         }
+    }
+    
+    func noInternetConnection() {
+        connectionStatus = false
     }
 }

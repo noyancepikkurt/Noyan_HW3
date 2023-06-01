@@ -26,6 +26,8 @@
 		5D949F532A2523E500C1E2AB /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D949F522A2523E500C1E2AB /* LoadingShowable.swift */; };
 		5D949F562A25240B00C1E2AB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D949F552A25240B00C1E2AB /* LoadingView.swift */; };
 		5D949F582A2534BB00C1E2AB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D949F572A2534BB00C1E2AB /* AVFoundation.framework */; };
+		5D9E28712A291F1C0047BC89 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E28702A291F1C0047BC89 /* NetworkMonitor.swift */; };
+		5D9E28732A29229F0047BC89 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E28722A29229F0047BC89 /* SplashViewModel.swift */; };
 		5DB22DDB2A273334000C92B7 /* AlertMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB22DDA2A273334000C92B7 /* AlertMessages.swift */; };
 		5DB22DDD2A27334C000C92B7 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB22DDC2A27334C000C92B7 /* Icons.swift */; };
 		5DB22DDF2A2735F7000C92B7 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB22DDE2A2735F7000C92B7 /* CoreData.swift */; };
@@ -70,6 +72,8 @@
 		5D949F522A2523E500C1E2AB /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
 		5D949F552A25240B00C1E2AB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5D949F572A2534BB00C1E2AB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5D9E28702A291F1C0047BC89 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		5D9E28722A29229F0047BC89 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		5DB22DDA2A273334000C92B7 /* AlertMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessages.swift; sourceTree = "<group>"; };
 		5DB22DDC2A27334C000C92B7 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		5DB22DDE2A2735F7000C92B7 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -190,6 +194,14 @@
 			path = LoadingIndicator;
 			sourceTree = "<group>";
 		};
+		5D9E286F2A291F090047BC89 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				5D9E28702A291F1C0047BC89 /* NetworkMonitor.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		5DB22DD52A272928000C92B7 /* HeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +245,7 @@
 				5DB22DD92A27331D000C92B7 /* Constants */,
 				5DD5433C2A20857E0087FCA2 /* Extensions */,
 				5DD543502A2096140087FCA2 /* Helper */,
+				5D9E286F2A291F090047BC89 /* Reachability */,
 				5DD5433A2A2085480087FCA2 /* Resources */,
 				5DD5433B2A20856C0087FCA2 /* Screens */,
 				5DD089BC2A2084A80058F356 /* Info.plist */,
@@ -287,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				5DD5434A2A208D750087FCA2 /* View */,
+				5D9E28722A29229F0047BC89 /* SplashViewModel.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -467,9 +481,11 @@
 				5DD543422A2085CC0087FCA2 /* TableViewCell+Extension.swift in Sources */,
 				5DB22DDF2A2735F7000C92B7 /* CoreData.swift in Sources */,
 				5DD543762A20C8630087FCA2 /* DetailViewController.swift in Sources */,
+				5D9E28712A291F1C0047BC89 /* NetworkMonitor.swift in Sources */,
 				5DD5433E2A2085950087FCA2 /* AlertExtension.swift in Sources */,
 				5D7FF4B52A2374070016557E /* FooterCollectionViewCell.swift in Sources */,
 				5DB22DDB2A273334000C92B7 /* AlertMessages.swift in Sources */,
+				5D9E28732A29229F0047BC89 /* SplashViewModel.swift in Sources */,
 				5D65312D2A20D8C200C4919F /* RecentSearchModel.xcdatamodeld in Sources */,
 				5DD543462A2086000087FCA2 /* UIView+Extension.swift in Sources */,
 				5DD5434E2A208D940087FCA2 /* SplashViewController.swift in Sources */,
