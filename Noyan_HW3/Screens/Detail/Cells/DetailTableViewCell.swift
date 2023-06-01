@@ -35,9 +35,7 @@ final class DetailTableViewCell: UITableViewCell {
             }
         }
         
-        if exampleArray[index].isEmpty {
-            example.removeFromSuperview()
-        }
+        example.isHidden = exampleArray[index].isEmpty ? true : false
         
         definitionsLabel.text = definitions[index].definition
         partOfSpeechLabel.text = partOfSpeechArray[index].capitalized

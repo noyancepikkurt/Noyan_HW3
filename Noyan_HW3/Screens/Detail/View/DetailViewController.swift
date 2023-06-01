@@ -10,9 +10,9 @@ import DictionaryAPI
 
 final class DetailViewController: UIViewController, LoadingShowable {
     @IBOutlet private var detailTableView: UITableView!
-    private let header = DetailHeaderView()
-    private let footer = DetailFooterView()
     private let viewModel: DetailViewModel
+    private var headerView: DetailHeaderView?
+    private var headerVM: DetailHeaderViewModel?
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
@@ -43,7 +43,6 @@ final class DetailViewController: UIViewController, LoadingShowable {
     
     private func configDelegates() {
         viewModel.delegate = self
-        footer.delegate = self
         navigationController?.delegate = self
     }
 }
@@ -63,6 +62,11 @@ extension DetailViewController: DetailViewModelProtocol {
     
     func fetchedWordDetail() {
         detailTableView.reloadData()
+        guard let meaningModel = viewModel.wordDetail?.meanings else { return }
+        guard let phoneticsModel = viewModel.wordDetail?.phonetics else { return }
+        self.headerVM = DetailHeaderViewModel(meaningModel: meaningModel, phoneticModel: phoneticsModel)
+        guard let headerVM else { return }
+        self.headerView = DetailHeaderView(viewModel: headerVM)
         self.hideLoading()
     }
 }
@@ -89,13 +93,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        header.delegate = self
-        header.wordLabel.text = viewModel.selectedWord.capitalized
-        header.pronounceLabel.text = viewModel.wordDetail?.phonetic
-        guard let headerCollectionViewData = viewModel.wordDetail?.meanings,
-              let headerCollectionViewPhonetic = viewModel.wordDetail?.phonetics else { return nil}
-        header.configure(headerCollectionViewData, headerCollectionViewPhonetic)
-        return header
+        headerView?.delegate = self
+        headerView?.wordLabel.text = viewModel.selectedWord.capitalized
+        headerView?.pronounceLabel.text = viewModel.wordDetail?.phonetic
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -103,13 +104,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = DetailFooterView()
+        footer.delegate = self
         let sortedArray = viewModel.sortSynonymTopFiveScores()
         footer.configure(sortedArray)
         return footer
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return UIScreen.main.bounds.height / 6
+        return 150
     }
 }
 

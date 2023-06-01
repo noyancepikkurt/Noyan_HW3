@@ -60,7 +60,6 @@ final class HomeViewController: UIViewController {
             let screenHeight = UIScreen.main.bounds.height
             let bottomViewHeight = searchViewButton.frame.height
             let bottomViewY = screenHeight - keyboardSize.height - bottomViewHeight
-            
             if bottomViewY > 0 {
                 searchViewButton.frame.origin.y = bottomViewY
             }

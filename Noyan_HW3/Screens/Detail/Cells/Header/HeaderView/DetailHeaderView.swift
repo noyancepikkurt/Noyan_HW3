@@ -60,24 +60,18 @@ final class DetailHeaderView: UIView {
         return collection
     }()
     
-    private var audioPlayer = AVAudioPlayer()
-    private var phonetics = [Phonetic]()
+    private var viewModel: DetailHeaderViewModel
     weak var delegate: HeaderViewDelegate?
-    
-    private var meaningModel: [Meaning]? {
-        didSet {
-            self.collectionView.reloadData()
-        }
-    }
     
     private var selectedCellIndexPath: IndexPath? {
         didSet {
             collectionView.reloadData()
         }
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    init(viewModel: DetailHeaderViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         setupView()
     }
     
@@ -85,36 +79,20 @@ final class DetailHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ model: [Meaning],_ phoneticModel: [Phonetic]) {
-        self.meaningModel = model
-        self.phonetics = phoneticModel
+    @objc func audioButtonTapped() {
+        guard let audio = viewModel.audioURL else { return }
+        viewModel.requestForAudio(audio)
     }
     
-    @objc func audioButtonTapped() {
-        guard let audioURL = findValidAudioURL() else { return }
-        requestForAudio(audioURL)
-    }
-
-    func findValidAudioURL() -> URL? {
-        if let firstNonEmptyAudio = phonetics.first(where: { !$0.audio.isNilOrEmpty() }) {
-            return URL(string: firstNonEmptyAudio.audio ?? "")
-        } else if !phonetics.isEmpty {
-            return URL(string: phonetics[0].audio ?? "")
-        } else {
-            return nil
-        }
-    }
-
-    private func requestForAudio(_ url: URL) {
-        NetworkService.shared.requestAudio(url: url) { audioPlay in
-            self.audioPlayer = audioPlay
-            self.audioPlayer.play()
-        }
+    private func delegatesConfig() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        viewModel.delegate = self
     }
     
     private func setupView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        delegatesConfig()
+        viewModel.findValidAudioURL()
         collectionView.register(cellType: HeaderCollectionViewCell.self)
         addSubview(labelStackView)
         addSubview(audioButton)
@@ -148,7 +126,7 @@ final class DetailHeaderView: UIView {
 extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: HeaderCollectionViewCell.self, indexPath: indexPath) as HeaderCollectionViewCell
-        guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech?.capitalized else  { return UICollectionViewCell() }
+        guard let partOfSpeech = viewModel.meaningModel[indexPath.row].partOfSpeech?.capitalized else  { return UICollectionViewCell() }
         if indexPath == selectedCellIndexPath {
             cell.contentView.layer.borderColor = UIColor.blue.cgColor
         } else {
@@ -159,21 +137,22 @@ extension DetailHeaderView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var partOfSpeechs: [String] = []
-        meaningModel?.forEach({ meaning in
-            guard let partOfSpeech = meaning.partOfSpeech else { return }
-            partOfSpeechs.append(partOfSpeech)
-        })
-        return Set(partOfSpeechs).count
+        viewModel.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let partOfSpeech = meaningModel?[indexPath.row].partOfSpeech else { return }
+        guard let partOfSpeech = viewModel.meaningModel[indexPath.row].partOfSpeech else { return }
         self.delegate?.didSelectCollectionCell(partOfSpeech: partOfSpeech)
-        if indexPath == selectedCellIndexPath {
+        if indexPath == self.selectedCellIndexPath {
             selectedCellIndexPath = nil
         } else {
             selectedCellIndexPath = indexPath
         }
+    }
+}
+
+extension DetailHeaderView: HeaderViewModelDelegate {
+    func didNotFoundAudioURL() {
+        audioButton.isHidden = true
     }
 }

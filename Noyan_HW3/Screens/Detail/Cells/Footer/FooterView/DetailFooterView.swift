@@ -23,8 +23,8 @@ final class DetailFooterView: UIView {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 90, height: 40)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 4
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
         collection.showsHorizontalScrollIndicator = false
@@ -80,12 +80,12 @@ final class DetailFooterView: UIView {
             collectionView.topAnchor.constraint(equalTo: self.synonymLabel.bottomAnchor, constant: 12),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
         ])
     }
 }
 
-extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeCell(cellType: FooterCollectionViewCell.self, indexPath: indexPath)
         guard let synonymWord = synonymWords?[indexPath.row].word else { return UICollectionViewCell()}
@@ -101,5 +101,13 @@ extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.didSelectSynonymWord(synonymWords?[indexPath.item].word ?? "")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel()
+        label.text = synonymWords?[indexPath.row].word
+        label.sizeToFit()
+        let desiredWidth = label.frame.width + 25
+        return CGSize(width: desiredWidth, height: 40)
     }
 }
