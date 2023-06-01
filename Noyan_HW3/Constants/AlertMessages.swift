@@ -10,4 +10,5 @@ import Foundation
 public enum AlertMessage: String {
     case ifNoSearchedWordTitle = "Sorry"
     case ifNoSearchedWordMessage = "The word you are looking for does not exist in the dictionary."
+    case ifSearchTextIsEmpty = "Please enter the word you want to search"
 }

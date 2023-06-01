@@ -95,6 +95,7 @@ extension DetailFooterView: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let synonymCount = synonymWords?.count else  { return 0 }
+        self.synonymLabel.isHidden = synonymCount == 0 ? true : false
         return synonymCount
     }
     

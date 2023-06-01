@@ -74,6 +74,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(cellType: DetailTableViewCell.self, indexPath: indexPath) as DetailTableViewCell
+        cell.selectionStyle = .none
         if let filteredModel = viewModel.filteredMeanings {
             cell.setup(filteredModel, index: indexPath.row)
         } else {

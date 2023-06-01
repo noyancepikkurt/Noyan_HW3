@@ -47,8 +47,12 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func searchViewTapped() {
-        guard let searchText = searchTextField.text else { return }
-        viewModel.checkWordAPI(searchedWord: searchText)
+        if searchTextField.text != "" {
+            guard let searchText = searchTextField.text else { return }
+            viewModel.checkWordAPI(searchedWord: searchText)
+        } else {
+            UIAlertController.alertMessage(title: AlertMessage.ifNoSearchedWordTitle.rawValue, message: AlertMessage.ifSearchTextIsEmpty.rawValue, vc: self)
+        }
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
