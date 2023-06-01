@@ -26,7 +26,8 @@ final class DetailHeaderViewModel {
     }
     
     func requestForAudio(_ url: URL) {
-        NetworkService.shared.requestAudio(url: url) { audioPlay in
+        NetworkService.shared.requestAudio(url: url) {[weak self] audioPlay in
+            guard let self else { return }
             self.audioPlayer = audioPlay
             self.audioPlayer.play()
         }

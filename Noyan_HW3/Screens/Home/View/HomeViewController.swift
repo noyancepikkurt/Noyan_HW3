@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        searchTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
         viewModel.fetchAllRecentWords()
         searchViewButtonSetUp()
@@ -30,6 +31,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func searchViewButtonConfig() {
+        searchTextField.returnKeyType = .search
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchViewTapped))
         searchViewButton.isUserInteractionEnabled = true
         searchViewButton.addGestureRecognizer(gestureRecognizer)
@@ -60,9 +62,7 @@ final class HomeViewController: UIViewController {
             let screenHeight = UIScreen.main.bounds.height
             let bottomViewHeight = searchViewButton.frame.height
             let bottomViewY = screenHeight - keyboardSize.height - bottomViewHeight
-            if bottomViewY > 0 {
-                searchViewButton.frame.origin.y = bottomViewY
-            }
+            searchViewButton.frame.origin.y = bottomViewY
         }
     }
     
@@ -113,5 +113,12 @@ extension HomeViewController: HomeViewModelProtocol {
                                        message: AlertMessage.ifNoSearchedWordMessage.rawValue,
                                        vc: self)
         searchTextField.text = ""
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchViewTapped()
+        return true
     }
 }
