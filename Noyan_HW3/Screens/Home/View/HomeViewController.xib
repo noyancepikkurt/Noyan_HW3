@@ -13,6 +13,7 @@
                 <outlet property="recentSearchTableView" destination="3aF-vY-hPi" id="X0O-Xf-0Ju"/>
                 <outlet property="searchTextField" destination="TRX-Ji-sBd" id="Dhi-Df-yO1"/>
                 <outlet property="searchViewButton" destination="iWz-y5-teI" id="OiQ-GQ-hrM"/>
+                <outlet property="searchViewConst" destination="mBq-o7-fjZ" id="hDh-o2-eT4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,10 +32,11 @@
                     <rect key="frame" x="16" y="187" width="361" height="475"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWz-y5-teI">
-                    <rect key="frame" x="0.0" y="740" width="393" height="92"/>
+                    <rect key="frame" x="0.0" y="752" width="393" height="100"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
                             <rect key="frame" x="146" y="33" width="101" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -42,9 +44,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <constraints>
-                        <constraint firstItem="ou4-uK-8bK" firstAttribute="top" secondItem="iWz-y5-teI" secondAttribute="top" constant="33" id="5Bb-wh-Mt2"/>
-                        <constraint firstItem="ou4-uK-8bK" firstAttribute="leading" secondItem="iWz-y5-teI" secondAttribute="leading" constant="146" id="PVX-Bt-hz7"/>
-                        <constraint firstAttribute="trailing" secondItem="ou4-uK-8bK" secondAttribute="trailing" constant="146" id="hbD-iN-Tp2"/>
+                        <constraint firstAttribute="height" constant="100" id="1Ay-54-Tv3"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRX-Ji-sBd" customClass="CustomTextField" customModule="Noyan_HW3" customModuleProvider="target">
@@ -66,17 +66,15 @@
             <constraints>
                 <constraint firstItem="TRX-Ji-sBd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="0js-RW-jNR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3aF-vY-hPi" secondAttribute="trailing" constant="16" id="1v3-6S-baT"/>
-                <constraint firstItem="iWz-y5-teI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5Av-rs-ydT"/>
-                <constraint firstItem="iWz-y5-teI" firstAttribute="top" secondItem="3aF-vY-hPi" secondAttribute="bottom" constant="78" id="6sk-OV-qjV"/>
-                <constraint firstItem="iWz-y5-teI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ceb-at-ekd"/>
+                <constraint firstItem="iWz-y5-teI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9KH-ie-0pM"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.0263505" id="IkS-D5-Ksz"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.625823" id="NjY-Wv-B5E"/>
-                <constraint firstItem="iWz-y5-teI" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.121212" id="Q0b-9n-c9H"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jHB-R4-ckL" secondAttribute="trailing" constant="220" id="RMw-dl-GDP"/>
+                <constraint firstItem="iWz-y5-teI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Rig-U1-4n3"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="top" secondItem="TRX-Ji-sBd" secondAttribute="bottom" constant="40" id="RmZ-Vx-1CP"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="V8d-3A-6tf"/>
                 <constraint firstItem="TRX-Ji-sBd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fHJ-SY-ZhW"/>
-                <constraint firstAttribute="bottom" secondItem="iWz-y5-teI" secondAttribute="bottom" id="o1L-Bp-gSe"/>
+                <constraint firstAttribute="bottom" secondItem="iWz-y5-teI" secondAttribute="bottom" id="mBq-o7-fjZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TRX-Ji-sBd" secondAttribute="trailing" constant="16" id="rjB-qA-Cgr"/>
                 <constraint firstItem="jHB-R4-ckL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="v4Q-Uv-nfL"/>
                 <constraint firstItem="3aF-vY-hPi" firstAttribute="top" secondItem="jHB-R4-ckL" secondAttribute="bottom" constant="12" id="vPS-fG-HDV"/>

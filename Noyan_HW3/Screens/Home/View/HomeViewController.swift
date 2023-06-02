@@ -11,6 +11,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private var searchTextField: CustomTextField!
     @IBOutlet private var recentSearchTableView: UITableView!
     @IBOutlet private var searchViewButton: UIView!
+    @IBOutlet private var searchViewConst: NSLayoutConstraint!
     private var viewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -38,14 +39,17 @@ final class HomeViewController: UIViewController {
     }
     
     private func searchViewButtonSetUp() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(notification:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
     }
     
     @objc private func searchViewTapped() {
@@ -57,17 +61,32 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let screenHeight = UIScreen.main.bounds.height
-            let bottomViewHeight = searchViewButton.frame.height
-            let bottomViewY = screenHeight - keyboardSize.height - bottomViewHeight
-            searchViewButton.frame.origin.y = bottomViewY
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if searchTextField.isEditing  {
+            moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.searchViewConst, keyboardWillShow: true)
         }
     }
     
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        searchViewButton.frame.origin.y = UIScreen.main.bounds.height - searchViewButton.frame.height
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        moveViewWithKeyboard(notification: notification, viewBottomConstraint: self.searchViewConst, keyboardWillShow: false)
+    }
+    
+    func moveViewWithKeyboard(notification: NSNotification, viewBottomConstraint: NSLayoutConstraint, keyboardWillShow: Bool) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let keyboardHeight = keyboardSize.height
+        let keyboardDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let keyboardCurve = UIView.AnimationCurve(rawValue: notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! Int)!
+        if keyboardWillShow {
+            let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
+            let bottomConstant: CGFloat = 20
+            viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : bottomConstant)
+        }else {
+            viewBottomConstraint.constant = 0
+        }
+        let animator = UIViewPropertyAnimator(duration: keyboardDuration, curve: keyboardCurve) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+        animator.startAnimation()
     }
 }
 
