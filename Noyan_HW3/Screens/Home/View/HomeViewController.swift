@@ -78,7 +78,7 @@ final class HomeViewController: UIViewController {
         let keyboardCurve = UIView.AnimationCurve(rawValue: notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! Int)!
         if keyboardWillShow {
             let safeAreaExists = (self.view?.window?.safeAreaInsets.bottom != 0)
-            let bottomConstant: CGFloat = 20
+            let bottomConstant: CGFloat = 0
             viewBottomConstraint.constant = keyboardHeight + (safeAreaExists ? 0 : bottomConstant)
         }else {
             viewBottomConstraint.constant = 0

@@ -34,9 +34,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWz-y5-teI">
                     <rect key="frame" x="0.0" y="752" width="393" height="100"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
-                            <rect key="frame" x="146" y="33" width="101" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou4-uK-8bK">
+                            <rect key="frame" x="162" y="37" width="69.333333333333314" height="26"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -45,6 +44,8 @@
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="1Ay-54-Tv3"/>
+                        <constraint firstItem="ou4-uK-8bK" firstAttribute="centerY" secondItem="iWz-y5-teI" secondAttribute="centerY" id="5yf-hr-eQ6"/>
+                        <constraint firstItem="ou4-uK-8bK" firstAttribute="centerX" secondItem="iWz-y5-teI" secondAttribute="centerX" id="d0b-U0-FdN"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRX-Ji-sBd" customClass="CustomTextField" customModule="Noyan_HW3" customModuleProvider="target">
